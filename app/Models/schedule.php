@@ -10,8 +10,6 @@ class schedule extends Model
     use HasFactory;
 
     protected $fillable = [
-        'testMinatDate',
-        'wawancaraAsistenDate',
-        'wawancaraDosenDate',
+        'scheduleDate',
     ];
 }

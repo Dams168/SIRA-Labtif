@@ -10,8 +10,6 @@ class test extends Model
     use HasFactory;
 
     protected $fillable = [
-        'testMinatScore',
-        'wawancaraAsistenScore',
-        'wawancaraDosenScore',
+        'scoreTest',
     ];
 }
