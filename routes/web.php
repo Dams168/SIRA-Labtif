@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\Kegiatanku\KegiatankuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Program\ProgramController;
 use Illuminate\Support\Facades\Route;
@@ -9,7 +10,7 @@ use App\Http\Middleware\RolesMiddleware;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard', function () {
@@ -18,7 +19,12 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 
 Route::group(['middleware' => ['role:user']], function () {
+    // Program Route
     Route::get('/program', [ProgramController::class, 'index'])->name('program');
+
+
+    // Kegiatanku Route
+    Route::get('/kegiatanku', [KegiatankuController::class, 'index'])->name('kegiatanku');
 });
 
 
