@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(roles::class, 'roleId');
     }
+
+    public function socialAccounts()
+    {
+        return $this->hasMany(SocialAccount::class);
+    }
 }

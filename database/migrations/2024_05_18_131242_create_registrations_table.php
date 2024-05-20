@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('npm')->unique();
             $table->enum('course', ['Struktur Data', 'Jaringan Komputer', 'Pemrograman Berbasis Objek', 'Multimedia', 'Pemrograman Web']);
-            $table->string('degree');
+            $table->string('photo');
             $table->string('class');
             $table->date('regDate');
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
