@@ -15,8 +15,8 @@ class RolesMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user() && $request->user()->role !== 'admin') {
-            return redirect('/');
+        if ($request->user() && $request->user()->roleId !== 2) {
+            return redirect('/dashboard');
         }
         return $next($request);
     }

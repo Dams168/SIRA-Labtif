@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Program\ProgramController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\RolesMiddleware;
 
@@ -15,6 +16,11 @@ Route::group(['middleware' => ['role:admin']], function () {
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::group(['middleware' => ['role:user']], function () {
+    Route::get('/program', [ProgramController::class, 'index'])->name('program');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

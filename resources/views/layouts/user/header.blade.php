@@ -9,13 +9,14 @@
             <ul
                 class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-700 rounded-lg bg-gray-950 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
                 <li>
-                    <a href="#"
+                    <a href="/"
                         class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0 md:text-blue-500"
                         aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0">Program</a>
+                    <a href="{{ route('program') }}"
+                        class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
+                        aria-current="page">Program</a>
                 </li>
                 <li>
                     <a href="#"
@@ -89,11 +90,11 @@
                 id="mobile-menu-dropdown">
                 <ul class="py-2" aria-labelledby="mobile-menu-button">
                     <li>
-                        <a href="#"
+                        <a href="/"
                             class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Home</a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('program') }}"
                             class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Program</a>
                     </li>
                     <li>
