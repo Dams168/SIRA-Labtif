@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,11 +25,23 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
+        try {
+            $request->authenticate();
 
-        $request->session()->regenerate();
+            $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+            if (Auth::user()->roleId === 1) {
+                return redirect()->intended(route('dashboard', absolute: false));
+            } else {
+                return redirect()->intended(route('home', absolute: false));
+            }
+        } catch (ValidationException $e) {
+            // Check if the error message contains the message related to password Bcrypt algorithm
+            if (str_contains($e->getMessage(), 'This password does not use the Bcrypt algorithm')) {
+                return redirect()->route('login')->withErrors(['email' => 'This email is already registered. Please use another method to login.']);
+            }
+            throw $e;
+        }
     }
 
     /**

@@ -13,11 +13,19 @@ class RolesMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if ($request->user() && $request->user()->roleId !== 1) {
-            return redirect('/dashboard');
+
+        if (!auth()->check()) {
+            return redirect()->route('login');
         }
-        return $next($request);
+
+        foreach ($roles as $role) {
+            if ($request->user()->hasRole($role)) {
+                return $next($request);
+            }
+        }
+
+        return redirect()->back()->with('error', 'Unauthorized.');
     }
 }

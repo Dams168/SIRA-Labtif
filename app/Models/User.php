@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(SocialAccount::class);
     }
+
+    public function hasRole($role)
+    {
+        return $this->roles->name === $role;
+    }
 }

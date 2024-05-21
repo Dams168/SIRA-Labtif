@@ -13,12 +13,14 @@
                 <input type="email" name="email" id="email"
                     class="bg-gray-700 border border-gray-600 text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
                     placeholder="name@company.com" required="">
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
             <div>
                 <label for="password" class="block mb-2 text-sm font-medium text-white">Password</label>
                 <input type="password" name="password" id="password" placeholder="••••••••"
                     class="bg-gray-700 border border-gray-600 text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
                     required="">
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
             <div class="flex items-center justify-end">
                 @if (Route::has('password.request'))

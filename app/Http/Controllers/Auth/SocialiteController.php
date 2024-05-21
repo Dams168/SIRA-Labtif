@@ -26,7 +26,7 @@ class SocialiteController extends Controller
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
     }
 
     public function findOrCreateUser($socialUser, $provider)

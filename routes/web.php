@@ -12,21 +12,20 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::group(['middleware' => ['roleId:admin']], function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 });
 
-Route::group(['middleware' => ['role:user']], function () {
+
+Route::middleware(['auth', 'role:user'])->group(function () {
     // Program Route
     Route::get('/program', [ProgramController::class, 'index'])->name('program');
-
 
     // Kegiatanku Route
     Route::get('/kegiatanku', [KegiatankuController::class, 'index'])->name('kegiatanku');
 });
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

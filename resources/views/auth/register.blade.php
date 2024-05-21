@@ -10,25 +10,30 @@
                 <label for="name" class="block mb-2 text-sm font-medium text-white">Name</label>
                 <input type="text" name="name" id="name"
                     class="bg-gray-700 border border-gray-600 text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                    placeholder="Your Name" required="">
+                    placeholder="Your Name" required>
+                <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
             <div>
                 <label for="email" class="block mb-2 text-sm font-medium text-white">Your email</label>
                 <input type="email" name="email" id="email"
                     class="bg-gray-700 border border-gray-600 text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                    placeholder="name@company.com" required="">
+                    placeholder="name@company.com" required>
+                <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
             <div>
                 <label for="password" class="block mb-2 text-sm font-medium text-white">Password</label>
                 <input type="password" name="password" id="password" placeholder="••••••••"
                     class="bg-gray-700 border border-gray-600 text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                    required="">
+                    required>
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
             <div>
-                <label for="confirm-password" class="block mb-2 text-sm font-medium text-white">Confirm password</label>
-                <input type="password" name="confirm-password" id="confirm-password" placeholder="••••••••"
+                <label for="password_confirmation" class="block mb-2 text-sm font-medium text-white">Confirm
+                    password</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="••••••••"
                     class="bg-gray-700 border border-gray-600 text-white sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                    required="">
+                    required>
+                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
             <button type="submit"
                 class="w-full text-white bg-blue-500 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
