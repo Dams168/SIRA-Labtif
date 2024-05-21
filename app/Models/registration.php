@@ -13,7 +13,7 @@ class registration extends Model
         'course',
         'npm',
         'class',
-        'degree',
+        'photo',
         'regDate',
         'status'
     ];

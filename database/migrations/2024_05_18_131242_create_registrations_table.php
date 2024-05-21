@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
             $table->string('npm')->unique();
-            $table->enum('course', ['Struktur Data', 'Jaringan Komputer', 'Pemrograman Berbasis Objek', 'Multimedia', 'Pemrograman Web']);
             $table->string('photo');
             $table->string('class');
             $table->date('regDate');
@@ -25,6 +24,9 @@ return new class extends Migration
 
             $table->unsignedBigInteger('fileId');
             $table->foreign('fileId')->references('id')->on('files')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->unsignedBigInteger('course_id');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

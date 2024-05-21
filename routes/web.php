@@ -12,7 +12,7 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::group(['middleware' => ['role:admin']], function () {
+Route::group(['middleware' => ['roleId:admin']], function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');

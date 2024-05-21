@@ -1,6 +1,6 @@
 <nav class="border-gray-200 bg-gray-950">
     <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
-        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="{{ route('home') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
             <x-application-logo class="w-12 h-12 fill-current text-white" />
         </a>
 
