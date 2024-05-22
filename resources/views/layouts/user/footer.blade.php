@@ -1,5 +1,5 @@
 <footer class="bg-gray-950">
-    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+    <div class="mx-auto w-full max-w-screen-xl p-4 pt-6 pb-20">
         <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
                 <a href="#" class="flex items-center">
