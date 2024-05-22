@@ -15,6 +15,26 @@ class registration extends Model
         'class',
         'photo',
         'regDate',
-        'status'
+        'status',
+        'note',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'userId');
+    }
+
+    public function file()
+    {
+        return $this->belongsTo(files::class, 'fileId');
+    }
+    public function course()
+    {
+        return $this->belongsTo(course::class, 'course_id');
+    }
+
+    public function test()
+    {
+        return $this->hasMany(test::class);
+    }
 }

@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('fileCV');
             $table->string('fileSuratLamaran');
             $table->string('fileCertificate');
-            $table->string('fileTranscript');
+            $table->string('fileFHS');
             $table->string('fileSuratRekomendasi')->nullable();
-            $table->string('productImages');
+            $table->string('fileProductImages');
             $table->string('fileProduct');
         });
     }

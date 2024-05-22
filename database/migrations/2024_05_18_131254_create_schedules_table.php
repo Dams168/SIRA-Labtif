@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->date('scheduleDate');
+            $table->date('scheduleName');
 
             $table->unsignedBigInteger('registrationId');
             $table->foreign('registrationId')->references('id')->on('registrations')->onDelete('cascade')->onUpdate('cascade');

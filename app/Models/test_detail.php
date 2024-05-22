@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class schedule extends Model
+class test_detail extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'scheduleName',
+        'nameScoreDetail',
+        'scoreTestDetail',
     ];
 
-    public function tests()
+    public function test()
     {
-        return $this->hasMany(Test::class, 'scheduleId');
+        return $this->belongsTo(test::class, 'testId');
     }
 }

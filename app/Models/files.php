@@ -13,9 +13,14 @@ class files extends Model
         'fileCV',
         'fileSuratLamaran',
         'fileCertificate',
-        'fileTranscript',
+        'fileFHS',
         'fileSuratRekomendasi',
-        'productImages',
+        'fileProductImages',
         'fileProduct'
     ];
+
+    public function registration()
+    {
+        return $this->hasOne(registration::class, 'fileId');
+    }
 }

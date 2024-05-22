@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('file_details', function (Blueprint $table) {
+        Schema::create('test_details', function (Blueprint $table) {
             $table->id();
-            $table->string('image_path');
-
-            $table->unsignedBigInteger('file_id');
-            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('testId');
+            $table->string('nameScoreDetail');
+            $table->integer('scoreTestDetail');
+            $table->foreign('testId')->references('id')->on('tests')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('file_details');
+        Schema::dropIfExists('test_details');
     }
 };

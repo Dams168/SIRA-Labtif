@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class course extends Model
 {
     use HasFactory;
+
+    public function registration()
+    {
+        return $this->hasOne(registration::class, 'courseId');
+    }
 }

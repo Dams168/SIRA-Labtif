@@ -13,4 +13,9 @@ class result extends Model
         'finalScore',
         'result',
     ];
+
+    public function test()
+    {
+        return $this->belongsTo(test::class, 'testId');
+    }
 }

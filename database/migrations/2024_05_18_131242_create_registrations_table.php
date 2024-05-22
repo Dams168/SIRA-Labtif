@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('photo');
             $table->string('class');
             $table->date('regDate');
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('status', ['Menunggu', 'Diterima', 'Ditolak'])->default('Menunggu');
+            $table->string('note')->nullable();
 
             $table->unsignedBigInteger('userId');
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

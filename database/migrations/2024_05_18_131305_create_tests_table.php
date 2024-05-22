@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
+            $table->string('nameTest');
             $table->integer('scoreTest');
-
             $table->unsignedBigInteger('scheduleId');
             $table->foreign('scheduleId')->references('id')->on('schedules')->onDelete('cascade')->onUpdate('cascade');
         });
