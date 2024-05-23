@@ -16,18 +16,17 @@ return new class extends Migration
             $table->string('npm')->unique();
             $table->string('photo');
             $table->string('class');
-            $table->date('regDate');
+            $table->string('period');
+            $table->string('phone')->unique();
+            $table->timestamp('regDate');
             $table->enum('status', ['Menunggu', 'Diterima', 'Ditolak'])->default('Menunggu');
             $table->string('note')->nullable();
 
             $table->unsignedBigInteger('userId');
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->unsignedBigInteger('fileId');
-            $table->foreign('fileId')->references('id')->on('files')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('courseId');
+            $table->foreign('courseId')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

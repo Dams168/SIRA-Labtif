@@ -3,10 +3,9 @@
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Kegiatanku\KegiatankuController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Program\FileController;
 use App\Http\Controllers\Program\ProgramController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\RolesMiddleware;
-
 
 Route::get('/', function () {
     return view('home');
@@ -22,6 +21,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:user'])->group(function () {
     // Program Route
     Route::get('/program', [ProgramController::class, 'index'])->name('program');
+    Route::get('/program/registration/{course}', [ProgramController::class, 'create'])->name('registration.create');
+    Route::post('/program/registration/{course}/store', [ProgramController::class, 'store'])->name('registration.store');
+
+
+    Route::get('/program/registration/file/{registration}', [FileController::class, 'create'])->name('file.create');
+    Route::post('/program/registration/file/{registration}/store', [FileController::class, 'store'])->name('file.store');
 
     // Kegiatanku Route
     Route::get('/kegiatanku', [KegiatankuController::class, 'index'])->name('kegiatanku');

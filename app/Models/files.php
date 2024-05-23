@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class files extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
+        'registrationId',
         'fileCV',
         'fileSuratLamaran',
         'fileCertificate',
@@ -21,6 +23,6 @@ class files extends Model
 
     public function registration()
     {
-        return $this->hasOne(registration::class, 'fileId');
+        return $this->belongsTo(registration::class, 'registrationId');
     }
 }

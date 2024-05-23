@@ -9,14 +9,9 @@ class registration extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $fillable = [
-        'course',
-        'npm',
-        'class',
-        'photo',
-        'regDate',
-        'status',
-        'note',
+        'userId', 'npm', 'class', 'period', 'phone', 'regDate', 'photo', 'courseId', 'status', 'note'
     ];
 
     public function user()
@@ -26,11 +21,12 @@ class registration extends Model
 
     public function file()
     {
-        return $this->belongsTo(files::class, 'fileId');
+        return $this->hasMany(files::class);
     }
+
     public function course()
     {
-        return $this->belongsTo(course::class, 'course_id');
+        return $this->belongsTo(course::class, 'courseId');
     }
 
     public function test()

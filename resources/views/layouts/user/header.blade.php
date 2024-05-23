@@ -32,9 +32,13 @@
                             <button @click="openProfile = !openProfile" type="button"
                                 class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-600"
                                 id="user-menu-button" aria-expanded="false">
-                                <span class="sr-only">Open user menu</span>
-                                <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-500"
-                                    src="{{ asset('assets/images/Logo-Laboratorium.png') }}" alt="user photo">
+                                @if (empty($registration->photo))
+                                    <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-500"
+                                        src="{{ asset('assets/images/default_profil.jpg') }}" alt="user photo">
+                                @else
+                                    <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-500"
+                                        src="{{ asset('storage/photo_profile/' . $registration->photo) }}" alt="user photo">
+                                @endif
                             </button>
                             <div x-show="openProfile" @click.away="openProfile = false"
                                 class="z-50 absolute right-0 mt-2 w-48 bg-gray-700 border border-gray-600 divide-y divide-gray-600 rounded-lg shadow"
@@ -52,7 +56,7 @@
                                         <form method="POST" action="{{ route('logout') }}"
                                             class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">
                                             @csrf
-                                            <a :href="route('logout')"
+                                            <a href="route('logout')"
                                                 onclick="event.preventDefault(); this.closest('form').submit();">
                                                 {{ __('Log Out') }}
                                             </a>

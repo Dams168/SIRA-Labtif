@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('fileSuratRekomendasi')->nullable();
             $table->string('fileProductImages');
             $table->string('fileProduct');
+
+            $table->unsignedBigInteger('registrationId');
+            $table->foreign('registrationId')->references('id')->on('registrations')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
