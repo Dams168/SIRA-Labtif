@@ -50,7 +50,7 @@ class User extends Authenticatable
 
     public function registration()
     {
-        return $this->hasOne(Registration::class);
+        return $this->hasOne(Registration::class, 'userId');
     }
 
     public function roles()
