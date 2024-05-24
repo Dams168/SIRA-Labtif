@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Kegiatanku\KegiatankuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Program\FileController;
@@ -9,9 +10,10 @@ use App\Http\Controllers\Status\StatusController;
 use App\Http\Controllers\Validasi\ValidasiController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/program', [ProgramController::class, 'index'])->name('program');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', function () {
@@ -22,7 +24,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth', 'role:user'])->group(function () {
     // Program Route
-    Route::get('/program', [ProgramController::class, 'index'])->name('program');
     Route::get('/program/registration/{course}', [ProgramController::class, 'create'])->name('registration.create');
     Route::post('/program/registration/{course}/store', [ProgramController::class, 'store'])->name('registration.store');
     Route::get('/program/registration/file/{registration}', [FileController::class, 'create'])->name('file.create');

@@ -7,9 +7,6 @@
                     <span class="self-center text-lg font-semibold whitespace-nowrap text-white">Labtif Universitas
                         Suryakancana</span>
                 </a>
-                @php
-                    $registration = Auth::user()->registration;
-                @endphp
             </div>
             <div class="grid grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-3">
                 <div>
@@ -22,7 +19,12 @@
                             <a href="{{ route('program') }}" class="hover:underline">Program</a>
                         </li>
                         <li class="mb-4">
-                            <a href="{{ route('validasi', $registration->id) }}" class="hover:underline">Validasi</a>
+                            @if (isset($registration))
+                                <a href="{{ route('validasi', $registration->id) }}"
+                                    class="hover:underline">Validasi</a>
+                            @else
+                                <a href="#" class="hover:underline">Validasi</a>
+                            @endif
                         </li>
                         <li>
                             <a href="{{ route('kegiatanku') }}" class="hover:underline">Kegiatanku</a>

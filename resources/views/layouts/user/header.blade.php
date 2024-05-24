@@ -5,9 +5,6 @@
             <x-application-logo class="w-12 h-12 fill-current text-white" />
         </a>
 
-        @php
-            $registration = Auth::user()->registration;
-        @endphp
         <!-- Non-responsive menu -->
         <div class="hidden md:flex md:items-center md:space-x-8" id="navbar-user">
             <ul
@@ -23,9 +20,15 @@
                         aria-current="page">Program</a>
                 </li>
                 <li>
-                    <a href="{{ route('validasi', $registration->id) }}"
-                        class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
-                        aria-current="page">Validasi</a>
+                    @if (isset($registration))
+                        <a href="{{ route('validasi', $registration->id) }}"
+                            class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
+                            aria-current="page">Validasi</a>
+                    @else
+                        <a href="#"
+                            class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
+                            aria-current="page">Validasi</a>
+                    @endif
                 </li>
                 <li>
                     <a href="{{ route('kegiatanku') }}"
@@ -106,17 +109,33 @@
 
                 <span class="text-sm text-gray-400 group-hover:text-blue-500">Program</span>
             </a>
-            <a href="{{ route('validasi', $registration->id) }}"
-                class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
-                <svg class="w-6 h-6 mb-1 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
-                    <path
-                        d="M20,6h-8l-2-2H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8C22,6.9,21.1,6,20,6z">
-                    </path>
+            @if (isset($registration))
+                <a href="{{ route('validasi', $registration->id) }}"
+                    class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
+                    <svg class="w-6 h-6 mb-1 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path
+                            d="M20,6h-8l-2-2H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8C22,6.9,21.1,6,20,6z">
+                        </path>
 
-                </svg>
-                <span class="text-sm text-gray-400 group-hover:text-blue-500">Validasi</span>
-            </a>
+                    </svg>
+                    <span class="text-sm text-gray-400 group-hover:text-blue-500">Validasi</span>
+                </a>
+            @else
+                <a href="#" class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
+                    <svg class="w-6 h-6 mb-1 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path
+                            d="M20,6h-8l-2-2H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8C22,6.9,21.1,6,20,6z">
+                        </path>
+
+                    </svg>
+                    <span class="text-sm text-gray-400 group-hover:text-blue-500">Validasi</span>
+                </a>
+            @endif
+
             <a href="{{ route('kegiatanku') }}"
                 class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
                 <svg class="w-6 h-6 mb-1 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
