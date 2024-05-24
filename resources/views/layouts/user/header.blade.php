@@ -5,6 +5,9 @@
             <x-application-logo class="w-12 h-12 fill-current text-white" />
         </a>
 
+        @php
+            $registration = Auth::user()->registration;
+        @endphp
         <!-- Non-responsive menu -->
         <div class="hidden md:flex md:items-center md:space-x-8" id="navbar-user">
             <ul
@@ -20,7 +23,7 @@
                         aria-current="page">Program</a>
                 </li>
                 <li>
-                    <a href="{{ route('validasi') }}"
+                    <a href="{{ route('validasi', $registration->id) }}"
                         class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
                         aria-current="page">Validasi</a>
                 </li>
@@ -37,9 +40,6 @@
                             <button @click="openProfile = !openProfile" type="button"
                                 class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-600"
                                 id="user-menu-button" aria-expanded="false">
-                                @php
-                                    $registration = Auth::user()->registration;
-                                @endphp
                                 @if (empty($registration->photo))
                                     <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-500"
                                         src="{{ asset('assets/images/default_profil.jpg') }}" alt="user photo">
@@ -106,7 +106,7 @@
 
                 <span class="text-sm text-gray-400 group-hover:text-blue-500">Program</span>
             </a>
-            <a href="{{ route('validasi') }}"
+            <a href="{{ route('validasi', $registration->id) }}"
                 class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
                 <svg class="w-6 h-6 mb-1 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">

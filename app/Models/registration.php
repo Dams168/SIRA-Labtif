@@ -21,7 +21,7 @@ class registration extends Model
 
     public function file()
     {
-        return $this->hasMany(files::class);
+        return $this->hasOne(files::class, 'registrationId');
     }
 
     public function course()

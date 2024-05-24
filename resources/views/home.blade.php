@@ -11,10 +11,9 @@
                     class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white">
                     Rekrutmen Aslabtif
                 </h1>
-                <p class="max-w-2xl mb-6 font-light text-gray-300 lg:mb-8 md:text-lg lg:text-xl">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio sit vero, velit, alias nesciunt amet
-                    obcaecati asperiores aperiam similique, quasi labore autem vel magni enim atque doloribus rerum debitis
-                    explicabo.
+                <p class="max-w-2xl mb-6 font-light text-gray-300 lg:mb-8 md:text-lg lg:text-xl">Mari bergabung dengan
+                    kami untuk mengasah keterampilan teknis, berkontribusi dalam pengembangan lab, dan menjadi bagian dari
+                    komunitas yang bersemangat dan inovatif.
                 </p>
                 <x-primary-button tag="a" href="{{ route('program') }}" class="px-5 py-3 mr-3">
                     Lihat Program
@@ -49,9 +48,8 @@
                         Asisten Laboratorium
                     </h1>
                     <p class="max-w-2xl mb-6 font-light text-gray-300 lg:mb-8 md:text-lg lg:text-xl">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio sit vero, velit, alias nesciunt amet
-                        obcaecati asperiores aperiam similique, quasi labore autem vel magni enim atque doloribus rerum
-                        debitis explicabo.
+                        Mari bersama-sama mengukir prestasi dan berkontribusi dalam menciptakan lingkungan belajar yang
+                        inspiratif dan produktif.
                     </p>
                 </div>
             </div>
@@ -69,8 +67,8 @@
                         </svg>
                     </div>
                     <h3 class="mb-2 text-xl font-bold text-white">Relasi</h3>
-                    <p class="text-gray-400">Plan it, create it, launch it. Collaborate seamlessly with all the organization
-                        and hit your marketing goals every month with our marketing plan.</p>
+                    <p class="text-gray-400">Membangun jaringan dengan dosen, keluarga besar ASLABTIF, dan profesional di
+                        bidang Teknik Informatika.</p>
                 </div>
                 <div>
                     <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-gray-800 lg:h-12 lg:w-12">
@@ -81,9 +79,8 @@
                             </path>
                         </svg>
                     </div>
-                    <h3 class="mb-2 text-xl font-bold text-white">Wawasan</h3>
-                    <p class="text-gray-400">Protect your organization, devices and stay compliant with our structured
-                        workflows and custom permissions made for you.</p>
+                    <h3 class="mb-2 text-xl font-bold text-white">Keterampilan</h3>
+                    <p class="text-gray-400">Kesempatan untuk meningkatkan keterampilan teknis dan soft skills.</p>
                 </div>
                 <div>
                     <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-gray-800 lg:h-12 lg:w-12">
@@ -98,8 +95,8 @@
                         </svg>
                     </div>
                     <h3 class="mb-2 text-xl font-bold text-white">Pengalaman</h3>
-                    <p class="text-gray-400">Auto-assign tasks, send Slack messages, and much more. Now power up with
-                        hundreds of new templates to help you get started.</p>
+                    <p class="text-gray-400">Memperoleh pengalaman langsung dalam mengelola dan mengembangkan kegiatan
+                        laboratorium.</p>
                 </div>
             </div>
         </div>
@@ -187,10 +184,13 @@
                 <h2 class="mb-2 text-lg font-semibold text-white">Catatan Lain:</h2>
                 <ul class="max-w-md space-y-1 text-gray-400 list-disc list-inside">
                     <li>
-                        Bertanggung Jawab
+                        Bersedia berkomitmen untuk menjalankan tugas dan tanggung jawab sebagai asisten laboratorium.
                     </li>
                     <li>
                         Dapat bekerja sama dalam tim
+                    </li>
+                    <li>
+                        Memiliki minat dan kemampuan di bidang teknis laboratorium.
                     </li>
                 </ul>
             </div>
