@@ -18,6 +18,9 @@
                         <li class="mb-4">
                             <a href="{{ route('program') }}" class="hover:underline">Program</a>
                         </li>
+                        <li class="mb-4">
+                            <a href="{{ route('validasi') }}" class="hover:underline">Validasi</a>
+                        </li>
                         <li>
                             <a href="{{ route('kegiatanku') }}" class="hover:underline">Kegiatanku</a>
                         </li>

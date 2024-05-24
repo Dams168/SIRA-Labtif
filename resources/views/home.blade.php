@@ -16,7 +16,7 @@
                     obcaecati asperiores aperiam similique, quasi labore autem vel magni enim atque doloribus rerum debitis
                     explicabo.
                 </p>
-                <x-primary-button href="{{ route('program') }}" class="px-5 py-3 mr-3">
+                <x-primary-button tag="a" href="{{ route('program') }}" class="px-5 py-3 mr-3">
                     Lihat Program
                     <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">

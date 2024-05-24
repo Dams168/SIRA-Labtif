@@ -20,6 +20,11 @@
                         aria-current="page">Program</a>
                 </li>
                 <li>
+                    <a href="{{ route('validasi') }}"
+                        class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
+                        aria-current="page">Validasi</a>
+                </li>
+                <li>
                     <a href="{{ route('kegiatanku') }}"
                         class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
                         aria-current="page">Kegiatanku</a>
@@ -80,62 +85,71 @@
         </div>
 
         <!-- Responsive menu -->
-        <div class="md:hidden fixed bottom-0 left-0 z-50 w-full h-16 bg-gray-700 border-t border-gray-600">
-            <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
-                <a href="{{ route('home') }}"
-                    class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-800 group">
-                    <svg class="w-5 h-5 mb-2 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                    </svg>
-                    <span class="text-sm text-gray-400 group-hover:text-blue-500">Home</span>
-                </a>
-                <a href="{{ route('program') }}"
-                    class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-800 group">
-                    <svg class="w-5 h-5 mb-2 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                            d="M11.074 4 8.442.408A.95.95 0 0 0 7.014.254L2.926 4h8.148ZM9 13v-1a4 4 0 0 1 4-4h6V6a1 1 0 0 0-1-1H1a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h17a1 1 0 0 0 1-1v-2h-6a4 4 0 0 1-4-4Z" />
-                        <path
-                            d="M19 10h-6a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1Zm-4.5 3.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM12.62 4h2.78L12.539.41a1.086 1.086 0 1 0-1.7 1.352L12.62 4Z" />
-                    </svg>
-                    <span class="text-sm text-gray-400 group-hover:text-blue-500">Program</span>
-                </a>
-                <a href="{{ route('kegiatanku') }}"
-                    class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-800 group">
-                    <svg class="w-5 h-5 mb-2 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 12.25V1m0 11.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M4 19v-2.25m6-13.5V1m0 2.25a2.25 2.25 0 0 0 0 4.5m0-4.5a2.25 2.25 0 0 1 0 4.5M10 19V7.75m6 4.5V1m0 11.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5ZM16 19v-2" />
-                    </svg>
-                    <span class="text-sm text-gray-400 group-hover:text-blue-500">Kegiatanku</span>
-                </a>
-                @if (Route::has('login'))
-                    @auth
-                        <a href="#"
-                            class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-800 group">
-                            <svg class="w-5 h-5 mb-2 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
-                            </svg>
-                            <span class="text-sm text-gray-400 group-hover:text-blue-500">Profil</span>
-                        </a>
-                    @else
-                        <a href="{{ route('login') }}"
-                            class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-800 group">
-                            <svg class="w-5 h-5 mb-2 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
-                            </svg>
-                            <span class="text-sm text-gray-400 group-hover:text-blue-500">Masuk</span>
-                        </a>
-                    @endauth
-                @endif
+        <div
+            class="md:hidden fixed bottom-0 left-0 z-50 w-full h-16 bg-gray-700 border-t border-gray-600 flex justify-between">
+            <a href="{{ route('home') }}" class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
+                <svg class="w-5 h-5 mb-2 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                </svg>
+                <span class="text-sm text-gray-400 group-hover:text-blue-500">Home</span>
+            </a>
+            <a href="{{ route('program') }}"
+                class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
+                <svg class="w-5 h-5 mb-2 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 30 30">
+                    <path
+                        d="M24.707,8.793l-6.5-6.5C18.019,2.105,17.765,2,17.5,2H7C5.895,2,5,2.895,5,4v22c0,1.105,0.895,2,2,2h16c1.105,0,2-0.895,2-2 V9.5C25,9.235,24.895,8.981,24.707,8.793z M18,21h-8c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1h8c0.552,0,1,0.448,1,1 C19,20.552,18.552,21,18,21z M20,17H10c-0.552,0-1-0.448-1-1c0-0.552,0.448-1,1-1h10c0.552,0,1,0.448,1,1C21,16.552,20.552,17,20,17 z M18,10c-0.552,0-1-0.448-1-1V3.904L23.096,10H18z">
+                    </path>
+                </svg>
 
-            </div>
+                <span class="text-sm text-gray-400 group-hover:text-blue-500">Program</span>
+            </a>
+            <a href="{{ route('validasi') }}"
+                class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
+                <svg class="w-6 h-6 mb-1 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                        d="M20,6h-8l-2-2H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8C22,6.9,21.1,6,20,6z">
+                    </path>
+
+                </svg>
+                <span class="text-sm text-gray-400 group-hover:text-blue-500">Validasi</span>
+            </a>
+            <a href="{{ route('kegiatanku') }}"
+                class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
+                <svg class="w-6 h-6 mb-1 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                        d="M 9 3 L 9 4 L 4 4 C 2.895 4 2 4.895 2 6 L 2 12 C 2 13.103 2.897 14 4 14 L 20 14 C 21.103 14 22 13.103 22 12 L 22 6 C 22 4.895 21.105 4 20 4 L 15 4 L 15 3 L 9 3 z M 12 10 C 12.552 10 13 10.448 13 11 C 13 11.552 12.552 12 12 12 C 11.448 12 11 11.552 11 11 C 11 10.448 11.448 10 12 10 z M 2 15.443359 L 2 18 C 2 19.105 2.895 20 4 20 L 20 20 C 21.105 20 22 19.105 22 18 L 22 15.443359 C 21.409 15.787359 20.732 16 20 16 L 4 16 C 3.268 16 2.591 15.787359 2 15.443359 z">
+                    </path>
+
+                </svg>
+                <span class="text-sm text-gray-400 group-hover:text-blue-500">Kegiatanku</span>
+            </a>
+            @if (Route::has('login'))
+                @auth
+                    <a href="#" class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
+                        <svg class="w-5 h-5 mb-2 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                        </svg>
+                        <span class="text-sm text-gray-400 group-hover:text-blue-500">Profil</span>
+                    </a>
+                @else
+                    <a href="{{ route('login') }}"
+                        class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
+                        <svg class="w-5 h-5 mb-2 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                        </svg>
+                        <span class="text-sm text-gray-400 group-hover:text-blue-500">Masuk</span>
+                    </a>
+                @endauth
+            @endif
         </div>
     </div>
 </nav>
