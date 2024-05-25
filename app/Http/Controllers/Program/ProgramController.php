@@ -14,6 +14,8 @@ class ProgramController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+        $registration = $user->registration;
         $courses = Course::all();
 
         $images = [
@@ -38,7 +40,7 @@ class ProgramController extends Controller
         }
 
 
-        return view('users.program.index', compact('courses'));
+        return view('users.program.index', compact('courses', 'registration'));
     }
 
     public function create($courseId)
