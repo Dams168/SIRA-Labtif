@@ -6,8 +6,6 @@ use App\Http\Controllers\Kegiatanku\KegiatankuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Program\FileController;
 use App\Http\Controllers\Program\ProgramController;
-use App\Http\Controllers\Status\StatusController;
-use App\Http\Controllers\Validasi\ValidasiController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,6 +17,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/file', [FileController::class, 'index'])->name('kelola.file');
+    Route::get('/file/{registration}', [FileController::class, 'showVerify'])->name('show.verify');
+
+    Route::post('/file/{registration}/rejected', [FileController::class, 'reject'])->name('verify.reject');
+    Route::post('/file/{registration}/approved', [FileController::class, 'approve'])->name('verify.approve');
 });
 
 

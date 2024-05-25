@@ -35,20 +35,19 @@ class FileController extends Controller
         ]);
 
         $username = Auth::user()->name;
-        $folderPath = 'public/uploads/' . $username;
 
         foreach ($validated as $key => $value) {
             if ($request->hasFile($key)) {
                 $originalName = pathinfo($request->file($key)->getClientOriginalName(), PATHINFO_FILENAME);
                 $fileName = $originalName . '-' . $username;
-                $path = $request->file($key)->storeAs($folderPath, $fileName);
+                $path = $request->file($key)->storeAs('uploads/' . $username, $fileName, 'public');
                 $validated[$key] = $path;
             }
         }
 
         files::create(array_merge($validated, ['registrationId' => $registration->id]));
 
-        return redirect()->route('kegiatanku')->with('success', 'File berhasil diupload');
+        return redirect()->route('validasi', $registration->id)->with('success', 'File berhasil diupload');
     }
 
     public function show($registrationId)
@@ -93,18 +92,54 @@ class FileController extends Controller
         ]);
 
         $username = Auth::user()->name;
-        $folderPath = 'public/uploads/' . $username;
 
         foreach ($validated as $key => $value) {
             if ($request->hasFile($key)) {
                 $originalName = pathinfo($request->file($key)->getClientOriginalName(), PATHINFO_FILENAME);
                 $fileName = $originalName . '-' . $username;
-                $path = $request->file($key)->storeAs($folderPath, $fileName);
+                $path = $request->file($key)->storeAs('uploads/' . $username, $fileName, 'public');
                 $validated[$key] = $path;
             }
         }
         files::where('id', $id)->update($validated);
 
         return redirect()->route('validasi', $registration->id)->with('success', 'Status berhasil diupdate');
+    }
+
+    public function index()
+    {
+        $registrations = registration::all();
+        $user = Auth::user();
+        $files = files::all();
+        $courses = course::all();
+        return view('admin.file.index', compact('files', 'registrations', 'courses'));
+    }
+
+    public function showVerify($id)
+    {
+        $registration = Registration::with('file')->findOrFail($id);
+        $courses = course::all();
+
+        return view('admin.file.verify', compact('courses', 'registration'));
+    }
+
+    public function reject(Request $request, Registration $registration)
+    {
+        $registration->update([
+            'status' => 'Ditolak',
+            'note' => $request->note,
+        ]);
+
+        return redirect()->route('show.verify', $registration->id)->with('success', 'Pendaftaran telah ditolak.');
+    }
+
+    public function approve(Registration $registration)
+    {
+        $registration->update([
+            'status' => 'Diterima',
+            'note' => 'Pendaftaran telah disetujui.',
+        ]);
+
+        return redirect()->back()->with('success', 'Pendaftaran telah disetujui.');
     }
 }

@@ -25,13 +25,14 @@
 
                 <div class="col-span-1 sm:col-span-2">
                     <div class="grid grid-cols-1 lg:grid-cols-1 gap-3">
-                        @if ($registration->note === 'Disetujui' || $registration->note === 'Ditolak')
+                        @if ($registration->status === 'Diterima' or $registration->status === 'Ditolak')
                             <!-- Catatan -->
                             <div class="p-6 bg-gray-800 rounded-lg shadow-md">
                                 <h3 class="text-lg font-bold text-white">Catatan :</h3>
                                 <p class="mt-2 text-gray-400">{{ $registration->note }}</p>
                             </div>
-                        @elseif ($registration->note === 'Ditolak')
+                        @endif
+                        @if ($registration->status === 'Ditolak')
                             <div class=" p-6 bg-gray-800 rounded-lg shadow-md">
                                 <form method="POST" action="{{ route('validasi.update', $registration->id) }}"
                                     enctype="multipart/form-data" class="mt-6 space-y-6">
@@ -121,8 +122,8 @@
                                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
                                 </form>
                             </div>
+                        @endif
                     </div>
-                    @endif
                 </div>
             </div>
         </div>

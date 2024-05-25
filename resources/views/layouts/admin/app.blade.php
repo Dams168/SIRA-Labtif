@@ -15,11 +15,11 @@
 </head>
 
 <body class=" antialiased">
-    <div x-data="{ open: false }" class="min-h-screen bg-gray-100 dark:bg-gray-900 flex">
+    <div x-data="{ open: false }" class="min-h-screen bg-gray-950 flex">
         @include('layouts.admin.sidebar')
         <div class="flex-1 flex-col ">
             @include('layouts.admin.header')
-            <main class="flex-1 p-4 md:ml-64">
+            <main class="flex-1 p-4">
                 @yield('content')
             </main>
         </div>
