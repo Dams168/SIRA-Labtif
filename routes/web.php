@@ -28,14 +28,20 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::post('/program/registration/{course}/store', [ProgramController::class, 'store'])->name('registration.store');
     Route::get('/program/registration/file/{registration}', [FileController::class, 'create'])->name('file.create');
     Route::post('/program/registration/file/{registration}/store', [FileController::class, 'store'])->name('file.store');
+
     Route::get('/validasi/{registration}', [FileController::class, 'show'])->name('validasi');
     Route::match(['put', 'patch'], '/validasi/{registration}', [FileController::class, 'update'])->name('validasi.update');
 
     // Kegiatanku Route
-    Route::get('/kegiatanku', [KegiatankuController::class, 'index'])->name('kegiatanku');
+    Route::get('/kegiatanku/{registration}', [KegiatankuController::class, 'index'])->name('kegiatanku');
 
-    // Route Validasi
-    // Route::get('/validasi', [ValidasiController::class, 'index'])->name('validasi');
+    // Route not registered and no activity
+    Route::get('/validasi', function () {
+        return view('users\validasi\not-register');
+    })->name('not-registered');
+    Route::get('/activity', function () {
+        return view('users.kegiatanku.no-activity');
+    })->name('no-activity');
 });
 
 Route::middleware('auth')->group(function () {

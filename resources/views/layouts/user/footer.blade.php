@@ -23,11 +23,16 @@
                                 <a href="{{ route('validasi', $registration->id) }}"
                                     class="hover:underline">Validasi</a>
                             @else
-                                <a href="#" class="hover:underline">Validasi</a>
+                                <a href="{{ route('not-registered') }}" class="hover:underline">Validasi</a>
                             @endif
                         </li>
                         <li>
-                            <a href="{{ route('kegiatanku') }}" class="hover:underline">Kegiatanku</a>
+                            @if (isset($registration))
+                                <a href="{{ route('kegiatanku', $registration->id) }}"
+                                    class="hover:underline">Kegiatanku</a>
+                            @else
+                                <a href="{{ route('no-activity') }}" class="hover:underline">Kegiatanku</a>
+                            @endif
                         </li>
                     </ul>
                 </div>
