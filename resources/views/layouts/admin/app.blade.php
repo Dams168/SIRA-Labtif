@@ -9,17 +9,16 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="icon" href="{{ asset('assets/images/Logo-Laboratorium.png') }}" type="image/x-icon" />
 
-
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class=" antialiased">
-    <div x-data="{ open: false }" class="min-h-screen bg-gray-950 flex">
+<body class="antialiased">
+    <div x-data="{ open: false }" class="min-h-screen bg-gray-950 grid grid-cols-1 lg:grid-cols-[auto_1fr]">
         @include('layouts.admin.sidebar')
-        <div class="flex-1 flex-col ">
+        <div class="flex-1 flex-col">
             @include('layouts.admin.header')
-            <main class="flex-1 p-4">
+            <main class="p-4">
                 @yield('content')
             </main>
         </div>
