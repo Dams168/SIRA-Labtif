@@ -8,7 +8,7 @@
             <!-- Bagian Foto dan Data Diri -->
             <div class="bg-gray-800 rounded-lg shadow-md p-6 mb-6 md:flex md:items-center">
                 <img src="{{ $registration->photo ? asset('storage/photo_profile/' . $registration->photo) : asset('assets/images/default_profil.jpg') }}"
-                    alt="User Photo" class="w-32 h-32 rounded-full mb-4 md:mb-0 md:mr-6">
+                    alt="User Photo" class="w-32 h-32 full mb-4 md:mb-0 md:mr-6">
                 <div>
                     <h2 class="text-xl font-bold mb-2 text-white">{{ $registration->user->name }}</h2>
                     <p class="text-gray-300"><strong>NPM:</strong> {{ $registration->npm }}</p>
@@ -16,7 +16,7 @@
                     </p>
                     <p class="text-gray-300"><strong>Matkul Minat:</strong> {{ $registration->course->name }}</p>
                     <p class="text-gray-300"><strong>Link Product:</strong> <a class="text-blue-400 hover:underline"
-                            href="{{ asset($registration->file->fileProduct) }}">Product</a></p>
+                            href="{{ asset($registration->file->fileProduct) }}" target="_blank">Product</a></p>
                 </div>
             </div>
 

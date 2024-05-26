@@ -18,7 +18,7 @@
                         <a href="#">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{{ $course->name }}</h5>
                         </a>
-                        <p class="mb-3 font-normal text-gray-400 text-end">Status : {{ $registration->status }}</p>
+                        <p class="mb-3 font-normal text-gray-400 text-end">Status Berkas : {{ $registration->status }}</p>
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@
                         @endif
                         @if ($registration->status === 'Ditolak')
                             <div class=" p-6 bg-gray-800 rounded-lg shadow-md">
-                                <form method="POST" action="{{ route('validasi.update', $registration->id) }}"
+                                <form method="POST" action="{{ route('kegiatanku.update', $registration->id) }}"
                                     enctype="multipart/form-data" class="mt-6 space-y-6">
                                     @method('PATCH')
                                     @csrf
@@ -124,7 +124,7 @@
                             </div>
                         @endif
                         @if ($registration->status === 'Diterima')
-                            <div class=" bg-gray-800 rounded-lg shadow-md">
+                            <div class="bg-gray-800 rounded-lg shadow-md">
                                 <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12">
                                     <h3
                                         class="mb-4 text-xl font-extrabold tracking-tight leading-none text-white md:text-3xl lg:text-4xl">
@@ -145,34 +145,17 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="bg-gray-800 border-b border-gray-700">
-                                                    <th scope="row"
-                                                        class="px-6 py-4 font-medium text-white whitespace-nowrap">
-                                                        Test tulis dan Pengetahuan
-                                                    </th>
-                                                    <td class="px-6 py-4">
-                                                        TBA
-                                                    </td>
-                                                </tr>
-                                                <tr class="bg-gray-800 border-b border-gray-700">
-                                                    <th scope="row"
-                                                        class="px-6 py-4 font-medium text-white whitespace-nowrap">
-                                                        Wawancara Asisten
-                                                    </th>
-                                                    <td class="px-6 py-4">
-                                                        TBA
-                                                    </td>
-                                                </tr>
-
-                                                <tr class="bg-gray-800 border-b border-gray-700">
-                                                    <th scope="row"
-                                                        class="px-6 py-4 font-medium text-white whitespace-nowrap">
-                                                        Wawancara Dosen
-                                                    </th>
-                                                    <td class="px-6 py-4">
-                                                        TBA
-                                                    </td>
-                                                </tr>
+                                                @foreach ($schedules as $schedule)
+                                                    <tr class="bg-gray-800 border-b border-gray-700">
+                                                        <th scope="row"
+                                                            class="px-6 py-4 font-medium text-white whitespace-nowrap">
+                                                            {{ ucwords(str_replace('_', ' ', $schedule->scheduleName)) }}
+                                                        </th>
+                                                        <td class="px-6 py-4">
+                                                            {{ \Carbon\Carbon::parse($schedule->scheduleDate)->format('d M Y') }}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

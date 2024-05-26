@@ -9,8 +9,12 @@ class schedule extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = [
         'scheduleName',
+        'scheduleDate',
+        'registrationId',
     ];
 
     public function tests()

@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Kegiatanku\KegiatankuController;
+use App\Http\Controllers\Jadwal\JadwalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Program\FileController;
 use App\Http\Controllers\Program\ProgramController;
+use App\Http\Controllers\Schedule\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,11 +19,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
+    //Route Kelola File
     Route::get('/file', [FileController::class, 'index'])->name('kelola.file');
     Route::get('/file/{registration}', [FileController::class, 'showVerify'])->name('show.verify');
-
     Route::post('/file/{registration}/rejected', [FileController::class, 'reject'])->name('verify.reject');
     Route::post('/file/{registration}/approved', [FileController::class, 'approve'])->name('verify.approve');
+
+    //Route Kelola Jadwal
+    Route::get('/jadwal', [ScheduleController::class, 'index'])->name('kelola.jadwal');
+    Route::get('/jadwal/{registration}', [ScheduleController::class, 'create'])->name('jadwal.create');
+    Route::post('/jadwal/{registration}/store', [ScheduleController::class, 'store'])->name('jadwal.store');
 });
 
 

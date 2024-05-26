@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\course;
 use App\Models\files;
 use App\Models\registration;
+use App\Models\schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,6 +56,7 @@ class FileController extends Controller
         $registration = Registration::findOrFail($registrationId);
         $courses = Course::all();
         $courseId = $registration->course->id;
+        $schedules = schedule::where('registrationId', $registrationId)->get();
 
         $images = [
             1 => 'assets/images/program/sd.jpg',
@@ -71,7 +73,7 @@ class FileController extends Controller
         $course = $courses->where('id', $courseId)->first();
         $file = $registration->file;
 
-        return view('users.kegiatanku.index', compact('registration', 'courses', 'course', 'registrationId', 'file'));
+        return view('users.kegiatanku.index', compact('registration', 'courses', 'course', 'registrationId', 'file', 'schedules'));
     }
 
     public function update(Request $request, string $id)
@@ -101,11 +103,17 @@ class FileController extends Controller
                 $validated[$key] = $path;
             }
         }
+
+        $registration->status = 'Menunggu';
+        $registration->note = null;
+        $registration->save();
         files::where('id', $id)->update($validated);
 
         return redirect()->route('kegiatanku', $registration->id)->with('success', 'Status berhasil diupdate');
     }
 
+
+    //admin
     public function index()
     {
         $registrations = registration::all();
@@ -115,8 +123,6 @@ class FileController extends Controller
         return view('admin.file.index', compact('files', 'registrations', 'courses'));
     }
 
-
-    // Admin
     public function showVerify($id)
     {
         $registration = Registration::with('file')->findOrFail($id);
@@ -139,7 +145,7 @@ class FileController extends Controller
     {
         $registration->update([
             'status' => 'Diterima',
-            'note' => 'Selamat!!! Pendafataran Anda Diterima silahkan cek secara berkala untuk informasi selanjutnya. Terima kasih telah mendaftar di rekrutmen ini :)',
+            'note' => 'Selamat!!! Pendaftaran Anda Diterima silahkan cek secara berkala untuk informasi selanjutnya. Terima kasih telah mendaftar di rekrutmen ini :)',
         ]);
 
         return redirect()->route('kelola.file')->with('success', 'Pendaftaran telah disetujui.');
