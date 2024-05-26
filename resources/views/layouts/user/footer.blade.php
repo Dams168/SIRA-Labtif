@@ -20,18 +20,10 @@
                         </li>
                         <li class="mb-4">
                             @if (isset($registration))
-                                <a href="{{ route('validasi', $registration->id) }}"
-                                    class="hover:underline">Validasi</a>
-                            @else
-                                <a href="{{ route('not-registered') }}" class="hover:underline">Validasi</a>
-                            @endif
-                        </li>
-                        <li>
-                            @if (isset($registration))
                                 <a href="{{ route('kegiatanku', $registration->id) }}"
                                     class="hover:underline">Kegiatanku</a>
                             @else
-                                <a href="{{ route('no-activity') }}" class="hover:underline">Kegiatanku</a>
+                                <a href="{{ route('not-registered') }}" class="hover:underline">Kegiatanku</a>
                             @endif
                         </li>
                     </ul>

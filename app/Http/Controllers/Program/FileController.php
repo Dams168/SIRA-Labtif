@@ -47,7 +47,7 @@ class FileController extends Controller
 
         files::create(array_merge($validated, ['registrationId' => $registration->id]));
 
-        return redirect()->route('validasi', $registration->id)->with('success', 'File berhasil diupload');
+        return redirect()->route('kegiatanku', $registration->id)->with('success', 'File berhasil diupload');
     }
 
     public function show($registrationId)
@@ -71,7 +71,7 @@ class FileController extends Controller
         $course = $courses->where('id', $courseId)->first();
         $file = $registration->file;
 
-        return view('users.validasi.index', compact('registration', 'courses', 'course', 'registrationId', 'file'));
+        return view('users.kegiatanku.index', compact('registration', 'courses', 'course', 'registrationId', 'file'));
     }
 
     public function update(Request $request, string $id)
@@ -103,7 +103,7 @@ class FileController extends Controller
         }
         files::where('id', $id)->update($validated);
 
-        return redirect()->route('validasi', $registration->id)->with('success', 'Status berhasil diupdate');
+        return redirect()->route('kegiatanku', $registration->id)->with('success', 'Status berhasil diupdate');
     }
 
     public function index()
@@ -115,6 +115,8 @@ class FileController extends Controller
         return view('admin.file.index', compact('files', 'registrations', 'courses'));
     }
 
+
+    // Admin
     public function showVerify($id)
     {
         $registration = Registration::with('file')->findOrFail($id);
@@ -130,16 +132,16 @@ class FileController extends Controller
             'note' => $request->note,
         ]);
 
-        return redirect()->route('show.verify', $registration->id)->with('success', 'Pendaftaran telah ditolak.');
+        return redirect()->route('kelola.file', $registration->id)->with('success', 'Pendaftaran telah ditolak.');
     }
 
     public function approve(Registration $registration)
     {
         $registration->update([
             'status' => 'Diterima',
-            'note' => 'Pendaftaran telah disetujui.',
+            'note' => 'Selamat!!! Pendafataran Anda Diterima silahkan cek secara berkala untuk informasi selanjutnya. Terima kasih telah mendaftar di rekrutmen ini :)',
         ]);
 
-        return redirect()->back()->with('success', 'Pendaftaran telah disetujui.');
+        return redirect()->route('kelola.file')->with('success', 'Pendaftaran telah disetujui.');
     }
 }

@@ -33,19 +33,14 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/program/registration/file/{registration}', [FileController::class, 'create'])->name('file.create');
     Route::post('/program/registration/file/{registration}/store', [FileController::class, 'store'])->name('file.store');
 
-    Route::get('/validasi/{registration}', [FileController::class, 'show'])->name('validasi');
-    Route::match(['put', 'patch'], '/validasi/{registration}', [FileController::class, 'update'])->name('validasi.update');
+    Route::get('/kegiatanku/{registration}', [FileController::class, 'show'])->name('kegiatanku');
+    Route::match(['put', 'patch'], '/kegiatanku/{registration}', [FileController::class, 'update'])->name('kegiatanku.update');
 
-    // Kegiatanku Route
-    Route::get('/kegiatanku/{registration}', [KegiatankuController::class, 'index'])->name('kegiatanku');
 
-    // Route not registered and no activity
-    Route::get('/validasi', function () {
-        return view('users\validasi\not-register');
+    // Route not registered
+    Route::get('/kegiatanku', function () {
+        return view('users\kegiatanku\not-register');
     })->name('not-registered');
-    Route::get('/activity', function () {
-        return view('users.kegiatanku.no-activity');
-    })->name('no-activity');
 });
 
 Route::middleware('auth')->group(function () {

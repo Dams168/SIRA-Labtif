@@ -14,11 +14,11 @@
             </h1>
 
             <p class="text-gray-200 text-center mb-4">
-                Status pendaftaran kamu dilihat disini
+                Kamu belum mendaftar kegiatan apapun. Yuk, segera daftar kegiatan yang kamu inginkan!
             </p>
 
             <!-- Button -->
-            <x-primary-button tag="a" href="{{ route('program') }}"> Program</x-primary-button>
+            <x-primary-button tag="a" href="{{ route('program') }}">Program</x-primary-button>
         </div>
     </section>
 

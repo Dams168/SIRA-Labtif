@@ -21,26 +21,14 @@
                 </li>
                 <li>
                     @if (isset($registration))
-                        <a href="{{ route('validasi', $registration->id) }}"
-                            class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
-                            aria-current="page">Validasi</a>
-                    @else
-                        <a href="{{ route('not-registered') }}"
-                            class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
-                            aria-current="page">Validasi</a>
-                    @endif
-                </li>
-                <li>
-                    @if (isset($registration))
                         <a href="{{ route('kegiatanku', $registration->id) }}"
                             class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
                             aria-current="page">Kegiatanku</a>
                     @else
-                        <a href="{{ route('no-activity') }}"
+                        <a href="{{ route('not-registered') }}"
                             class="block py-2 px-3 text-gray-200 rounded hover:bg-gray-700 md:hover:bg-transparent md:hover:text-blue-500 md:p-0"
                             aria-current="page">Kegiatanku</a>
                     @endif
-
                 </li>
             </ul>
             @if (Route::has('login'))
@@ -89,6 +77,11 @@
                             class="text-sm bg-gray-800 text-white rounded-full px-4 py-2 focus:ring-4 focus:ring-gray-600">
                             Login
                         </x-primary-button>
+
+                        <x-secondary-button tag="a" href="{{ route('register') }}"
+                            class="text-sm bg-gray-800 text-white rounded-full px-4 py-2 focus:ring-4 focus:ring-gray-600">
+                            Register
+                        </x-secondary-button>
                     @endauth
                 </div>
             @endif
@@ -117,7 +110,7 @@
                 <span class="text-sm text-gray-400 group-hover:text-blue-500">Program</span>
             </a>
             @if (isset($registration))
-                <a href="{{ route('validasi', $registration->id) }}"
+                <a href="{{ route('kegiatanku', $registration->id) }}"
                     class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
                     <svg class="w-6 h-6 mb-1 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
@@ -127,7 +120,7 @@
                         </path>
 
                     </svg>
-                    <span class="text-sm text-gray-400 group-hover:text-blue-500">Validasi</span>
+                    <span class="text-sm text-gray-400 group-hover:text-blue-500">Kegiatanku</span>
                 </a>
             @else
                 <a href="{{ route('not-registered') }}"
@@ -137,34 +130,6 @@
                         stroke="currentColor">
                         <path
                             d="M20,6h-8l-2-2H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8C22,6.9,21.1,6,20,6z">
-                        </path>
-
-                    </svg>
-                    <span class="text-sm text-gray-400 group-hover:text-blue-500">Validasi</span>
-                </a>
-            @endif
-
-            @if (isset($registration))
-                <a href="{{ route('kegiatanku', $registration->id) }}"
-                    class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
-                    <svg class="w-6 h-6 mb-1 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path
-                            d="M 9 3 L 9 4 L 4 4 C 2.895 4 2 4.895 2 6 L 2 12 C 2 13.103 2.897 14 4 14 L 20 14 C 21.103 14 22 13.103 22 12 L 22 6 C 22 4.895 21.105 4 20 4 L 15 4 L 15 3 L 9 3 z M 12 10 C 12.552 10 13 10.448 13 11 C 13 11.552 12.552 12 12 12 C 11.448 12 11 11.552 11 11 C 11 10.448 11.448 10 12 10 z M 2 15.443359 L 2 18 C 2 19.105 2.895 20 4 20 L 20 20 C 21.105 20 22 19.105 22 18 L 22 15.443359 C 21.409 15.787359 20.732 16 20 16 L 4 16 C 3.268 16 2.591 15.787359 2 15.443359 z">
-                        </path>
-
-                    </svg>
-                    <span class="text-sm text-gray-400 group-hover:text-blue-500">Kegiatanku</span>
-                </a>
-            @else
-                <a href="{{ route('no-activity') }}"
-                    class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
-                    <svg class="w-6 h-6 mb-1 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path
-                            d="M 9 3 L 9 4 L 4 4 C 2.895 4 2 4.895 2 6 L 2 12 C 2 13.103 2.897 14 4 14 L 20 14 C 21.103 14 22 13.103 22 12 L 22 6 C 22 4.895 21.105 4 20 4 L 15 4 L 15 3 L 9 3 z M 12 10 C 12.552 10 13 10.448 13 11 C 13 11.552 12.552 12 12 12 C 11.448 12 11 11.552 11 11 C 11 10.448 11.448 10 12 10 z M 2 15.443359 L 2 18 C 2 19.105 2.895 20 4 20 L 20 20 C 21.105 20 22 19.105 22 18 L 22 15.443359 C 21.409 15.787359 20.732 16 20 16 L 4 16 C 3.268 16 2.591 15.787359 2 15.443359 z">
                         </path>
 
                     </svg>
