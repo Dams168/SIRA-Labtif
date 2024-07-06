@@ -6,7 +6,7 @@
     <section class="bg-gray-900 antialiased">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
             <div class="max-w-screen-md mb-8 lg:mb-16">
-                <h2 class="mb-4 text-3xl tracking-tight font-bold text-white">Status Pendaftaran</h2>
+                <h2 class="mb-4 text-3xl tracking-tight font-bold text-white">Kegiatanku</h2>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="col-span-1 border rounded-lg shadow bg-gray-800 border-gray-700 max-h-56 max-w-sm">
@@ -18,7 +18,8 @@
                         <a href="#">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-white">{{ $course->name }}</h5>
                         </a>
-                        <p class="mb-3 font-normal text-gray-400 text-end">Status Berkas : {{ $registration->status }}</p>
+                        <p class="mb-3 font-normal text-gray-400 text-end">Status Pendaftaran : {{ $registration->status }}
+                        </p>
                     </div>
                 </div>
 

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Jadwal\JadwalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Program\FileController;
 use App\Http\Controllers\Program\ProgramController;

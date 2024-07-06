@@ -14,8 +14,11 @@ class ProgramController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
-        $registration = $user->registration;
+        if (Auth::check() && Auth::user()->registration) {
+            $registration = Auth::user()->registration;
+        } else {
+            $registration = null;
+        }
         $courses = Course::all();
 
         $images = [
