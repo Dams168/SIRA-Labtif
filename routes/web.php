@@ -27,8 +27,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //Route Kelola Jadwal
     Route::get('/jadwal', [ScheduleController::class, 'index'])->name('kelola.jadwal');
-    Route::get('/jadwal/{registration}', [ScheduleController::class, 'create'])->name('jadwal.create');
-    Route::post('/jadwal/{registration}/store', [ScheduleController::class, 'store'])->name('jadwal.store');
+    Route::get('/jadwal/setting', [ScheduleController::class, 'create'])->name('jadwal.setting');
+    Route::post('/jadwal/store', [ScheduleController::class, 'storeOrUpdateAll'])->name('jadwal.storeOrUpdateAll');
 });
 
 

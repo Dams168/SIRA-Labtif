@@ -29,8 +29,13 @@ class registration extends Model
         return $this->belongsTo(course::class, 'courseId');
     }
 
-    public function test()
+    // public function test()
+    // {
+    //     return $this->hasMany(test::class);
+    // }
+
+    public function schedules()
     {
-        return $this->hasMany(test::class);
+        return $this->hasMany(Schedule::class, 'registrationId');
     }
 }

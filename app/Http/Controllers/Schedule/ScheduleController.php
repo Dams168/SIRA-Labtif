@@ -11,63 +11,46 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        $registrations = registration::all();
+        $registrations = Registration::with('schedules')->where('status', 'Diterima')->get();
         return view('admin.jadwal.index', compact('registrations'));
     }
 
-    public function create($registrationId)
+    public function create()
     {
-        $registration = registration::find($registrationId);
-        return view('admin.jadwal.create', compact('registration'));
+        $registration = registration::all();
+        return view('admin.jadwal.setting', compact('registration'));
     }
 
-    public function store(Request $request, $registrationId)
+    public function storeOrUpdateAll(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'tanggalTestTulis' => 'required|date',
             'tanggalWawancaraAsisten' => 'required|date',
             'tanggalWawancaraDosen' => 'required|date',
         ]);
-        $registration = Registration::find($registrationId);
 
-        Schedule::create([
-            'scheduleName' => 'test Tulis dan Praktek',
-            'scheduleDate' => $validated['tanggalTestTulis'],
-            'registrationId' => $registration->id,
-        ]);
+        $registrations = Registration::where('status', 'Diterima')->get();
 
-        Schedule::create([
-            'scheduleName' => 'wawancara Asisten',
-            'scheduleDate' => $validated['tanggalWawancaraAsisten'],
-            'registrationId' => $registration->id,
-        ]);
+        foreach ($registrations as $registration) {
+            $schedulesData = [
+                'Test Tulis' => $request->input('tanggalTestTulis'),
+                'Wawancara Asisten' => $request->input('tanggalWawancaraAsisten'),
+                'Wawancara Dosen' => $request->input('tanggalWawancaraDosen'),
+            ];
 
-        Schedule::create([
-            'scheduleName' => 'wawancara Dosen',
-            'scheduleDate' => $validated['tanggalWawancaraDosen'],
-            'registrationId' => $registration->id,
-        ]);
+            foreach ($schedulesData as $scheduleName => $scheduleDate) {
+                $schedule = Schedule::updateOrCreate(
+                    [
+                        'registrationId' => $registration->id,
+                        'scheduleName' => $scheduleName
+                    ],
+                    [
+                        'scheduleDate' => $scheduleDate
+                    ]
+                );
+            }
+        }
 
-        return redirect()->route('kelola.jadwal')->with('success', 'Schedules added successfully.');
+        return redirect()->route('kelola.jadwal')->with('success', 'Jadwal berhasil diatur untuk semua pendaftar yang diterima.');
     }
-
-    // public function edit($id)
-    // {
-    //     $schedule = schedule::findOrFail($id);
-    //     return view('schedules.edit', compact('schedule'));
-    // }
-
-    // public function update(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'tanggal' => 'required|date',
-    //     ]);
-    //     $schedule = schedule::findOrFail($id);
-
-    //     $schedule->update([
-    //         'tanggal' => $request->tanggal,
-    //     ]);
-
-    //     return redirect()->route('schedule.index')->with('success', 'Jadwal berhasil diperbarui.');
-    // }
 }

@@ -5,11 +5,9 @@
 @section('content')
     <section class="bg-gray-950 text-gray-200">
         <div class="container mx-auto px-4 py-8">
-
             <h2 class="text-4xl font-medium text-gray-300 pb-6">Tambah Jadwal</h2>
-            <form action="{{ route('jadwal.store', $registration->id) }}" method="POST">
+            <form action="{{ route('jadwal.storeOrUpdateAll') }}" method="POST">
                 @csrf
-
                 <div>
                     <label for="tanggalTestTulis" class="block text-gray-300">Tanggal Test Tulis:</label>
                     <input type="date" name="tanggalTestTulis" id="tanggalTestTulis"
@@ -28,7 +26,7 @@
                         class="border border-gray-600 rounded-md px-3 py-2 mt-1 mb-3 w-full sm:w-1/2 lg:w-1/3 bg-gray-800 text-gray-200">
                 </div>
 
-                <x-primary-button type="submit">Tambah Jadwal</x-primary-button>
+                <x-primary-button type="submit">Tambahkan Jadwal</x-primary-button>
             </form>
         </div>
     </section>
