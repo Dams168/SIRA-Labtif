@@ -21,8 +21,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     //Route Kelola File
     Route::get('/file', [FileController::class, 'index'])->name('kelola.file');
     Route::get('/file/{registration}', [FileController::class, 'showVerify'])->name('show.verify');
-    Route::post('/file/{registration}/rejected', [FileController::class, 'reject'])->name('verify.reject');
-    Route::post('/file/{registration}/approved', [FileController::class, 'approve'])->name('verify.approve');
+    Route::post('/file/verify/{registration}', [FileController::class, 'verify'])->name('verify.save');
+    // Route::post('/file/{registration}/rejected', [FileController::class, 'reject'])->name('verify.reject');
+    // Route::post('/file/{registration}/approved', [FileController::class, 'approve'])->name('verify.approve');
 
     //Route Kelola Jadwal
     Route::get('/jadwal', [ScheduleController::class, 'index'])->name('kelola.jadwal');

@@ -77,7 +77,12 @@ class ProgramController extends Controller
             $validated['photo'] = basename($path);
         }
 
-        $registration = registration::create($validated);
-        return redirect()->route('file.create', ['registration' => $registration->id])->with('success', 'Registration successful');
+        if (Auth::user()->registration) {
+            Auth::user()->registration->update($validated);
+            return redirect()->route('file.create', ['registration' => Auth::user()->registration->id])->with('success', 'Registration successful');
+        } else {
+            $registration = registration::create($validated);
+            return redirect()->route('file.create', ['registration' => $registration->id])->with('success', 'Registration successful');
+        }
     }
 }

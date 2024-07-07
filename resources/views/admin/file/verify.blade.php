@@ -15,38 +15,62 @@
                     <p class="text-gray-300"><strong>Kelas:</strong> {{ $registration->class }} {{ $registration->period }}
                     </p>
                     <p class="text-gray-300"><strong>Matkul Minat:</strong> {{ $registration->course->name }}</p>
-                    <p class="text-gray-300"><strong>Link Product:</strong> <a class="text-blue-400 hover:underline"
-                            href="{{ asset($registration->file->fileProduct) }}" target="_blank">Product</a></p>
                 </div>
             </div>
 
             <!-- Bagian Tabel Berkas-Berkas -->
-            <div class="overflow-x-auto">
-                <table class="w-full md:w-3/4 mx-auto bg-gray-800 text-gray-200 rounded-lg shadow-md">
-                    <thead class="bg-gray-700 text-white">
-                        <tr>
-                            <th class="py-2 px-4">Nama Berkas</th>
-                            <th class="py-2 px-4">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (['fileCV', 'fileSuratLamaran', 'fileCertificate', 'fileFHS', 'fileSuratRekomendasi', 'fileProductImages'] as $fileField)
-                            @if (!empty($registration->file->$fileField))
-                                <tr class="border-b border-gray-600">
-                                    <td class="py-2 px-4">{{ basename($registration->file->$fileField) }}</td>
-                                    <td class="py-2 px-4">
-                                        <a href="{{ asset('storage/' . $registration->file->$fileField) }}" target="_blank"
-                                            class="text-blue-400 hover:underline">Preview</a>
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+            <form method="POST" action="{{ route('verify.save', $registration->id) }}">
+                @csrf
+                <div class="overflow-x-auto">
+                    <table class="w-full md:w-3/4 mx-auto bg-gray-800 text-gray-200 rounded-lg shadow-md">
+                        <thead class="bg-gray-700 text-white">
+                            <tr>
+                                <th class="py-2 px-4">Nama Berkas</th>
+                                <th class="py-2 px-4">Aksi</th>
+                                <th class="py-2 px-4">Verifikasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (['fileCV', 'fileSuratLamaran', 'fileCertificate', 'fileFHS', 'fileSuratRekomendasi', 'fileProductImages', 'fileProduct'] as $fileField)
+                                @if (!empty($registration->file->$fileField))
+                                    <tr class="border-b border-gray-600">
+                                        <td class="py-2 px-4">{{ basename($registration->file->$fileField) }}</td>
+                                        <td class="py-2 px-4">
+                                            @if (filter_var($registration->file->$fileField, FILTER_VALIDATE_URL))
+                                                <a href="{{ $registration->file->$fileField }}" target="_blank"
+                                                    class="text-blue-400 hover:underline">Link Product</a>
+                                            @else
+                                                <a href="{{ asset('storage/' . $registration->file->$fileField) }}"
+                                                    target="_blank" class="text-blue-400 hover:underline">Preview</a>
+                                            @endif
+                                        </td>
+
+                                        <td class="py-2 px-4">
+                                            <input type="checkbox" name="verification[{{ $fileField }}]" value="1"
+                                                {{ !empty($registration->file->verification) && $registration->file->verification->{$fileField . '_verified'} ? 'checked' : '' }}>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex justify-end mt-6 space-x-4 space-y-3">
+                    <button type="submit"
+                        class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Save</button>
+                </div>
+            </form>
+
+
+
+
 
             <!-- Button -->
-            <div class="flex justify-end mt-6 space-x-4 space-y-3">
+
+
+
+
+            {{-- <div class="flex justify-end mt-6 space-x-4 space-y-3">
                 <x-primary-button x-data=""
                     x-on:click.prevent="$dispatch('open-modal', 'reject-registration')"
                     x-on:click="$dispatch('set-action', '{{ route('verify.reject', $registration->id) }}')">
@@ -58,7 +82,7 @@
                     <x-secondary-button type="submit"
                         class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Diterima</x-secondary-button>
                 </form>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Modal Reject Registration -->

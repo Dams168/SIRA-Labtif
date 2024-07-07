@@ -34,96 +34,116 @@
                             </div>
                         @endif
                         @if ($registration->status === 'Ditolak')
-                            <div class=" p-6 bg-gray-800 rounded-lg shadow-md">
+                            <div class="p-6 bg-gray-800 rounded-lg shadow-md">
                                 <form method="POST" action="{{ route('kegiatanku.update', $registration->id) }}"
                                     enctype="multipart/form-data" class="mt-6 space-y-6">
                                     @method('PATCH')
                                     @csrf
                                     <div class="grid gap-6 mb-6 md:grid-cols-2">
-                                        <div>
-                                            <label for="fileCV" class="block mb-2 text-sm font-medium text-white">Upload
-                                                CV</label>
-                                            <input type="file" id="fileCV" name="fileCV"
-                                                class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                accept=".pdf" required>
-                                            @if ($file->fileCV)
-                                                <p class="mt-1 text-sm text-gray-400">Previous File:
-                                                    {{ basename($file->fileCV) }}</p>
-                                            @endif
-                                        </div>
-                                        <div>
-                                            <label for="fileSuratLamaran"
-                                                class="block mb-2 text-sm font-medium text-white">Upload Surat
-                                                Lamaran</label>
-                                            <input type="file" id="fileSuratLamaran" name="fileSuratLamaran"
-                                                class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                accept=".pdf" required>
-                                            @if ($file->fileSuratLamaran)
-                                                <p class="mt-1 text-sm text-gray-400">Previous File:
-                                                    {{ basename($file->fileSuratLamaran) }}</p>
-                                            @endif
-                                        </div>
-                                        <div>
-                                            <label for="fileCertificate"
-                                                class="block mb-2 text-sm font-medium text-white">Upload
-                                                Certificate</label>
-                                            <input type="file" id="fileCertificate" name="fileCertificate"
-                                                class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                accept=".pdf" required>
-                                            @if ($file->fileCertificate)
-                                                <p class="mt-1 text-sm text-gray-400">Previous File:
-                                                    {{ basename($file->fileCertificate) }}</p>
-                                            @endif
-                                        </div>
-                                        <div>
-                                            <label for="fileFHS" class="block mb-2 text-sm font-medium text-white">Upload
-                                                FHS</label>
-                                            <input type="file" id="fileFHS" name="fileFHS"
-                                                class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                accept=".pdf" required>
-                                            @if ($file->fileFHS)
-                                                <p class="mt-1 text-sm text-gray-400">Previous File:
-                                                    {{ basename($file->fileFHS) }}</p>
-                                            @endif
-                                        </div>
-                                        <div>
-                                            <label for="fileSuratRekomendasi"
-                                                class="block mb-2 text-sm font-medium text-white">Upload Surat
-                                                Rekomendasi</label>
-                                            <input type="file" id="fileSuratRekomendasi" name="fileSuratRekomendasi"
-                                                class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                accept=".pdf" required>
-                                            @if ($file->fileSuratRekomendasi)
-                                                <p class="mt-1 text-sm text-gray-400">Previous File:
-                                                    {{ basename($file->fileSuratRekomendasi) }}</p>
-                                            @endif
-                                        </div>
-                                        <div>
-                                            <label for="fileProductImages"
-                                                class="block mb-2 text-sm font-medium text-white">Upload Product
-                                                Images</label>
-                                            <input type="file" id="fileProductImages" name="fileProductImages"
-                                                class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                accept=".pdf" required>
-                                            @if ($file->fileProductImages)
-                                                <p class="mt-1 text-sm text-gray-400">Previous File:
-                                                    {{ basename($file->fileProductImages) }}</p>
-                                            @endif
-                                        </div>
-                                        <div>
-                                            <label for="fileProduct"
-                                                class="block mb-2 text-sm font-medium text-white">Product
-                                                Link</label>
-                                            <input type="url" id="fileProduct" name="fileProduct"
-                                                class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                value="{{ $file->fileProduct }}" required>
-                                        </div>
+                                        @if (!$file->verification || !$file->verification->fileCV_verified)
+                                            <div>
+                                                <label for="fileCV"
+                                                    class="block mb-2 text-sm font-medium text-white">Upload CV</label>
+                                                <input type="file" id="fileCV" name="fileCV"
+                                                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+                                                    accept=".pdf" required>
+                                                @if ($file->fileCV)
+                                                    <p class="mt-1 text-sm text-gray-400">Previous File:
+                                                        {{ basename($file->fileCV) }}</p>
+                                                @endif
+                                            </div>
+                                        @endif
+
+                                        @if (!$file->verification || !$file->verification->fileSuratLamaran_verified)
+                                            <div>
+                                                <label for="fileSuratLamaran"
+                                                    class="block mb-2 text-sm font-medium text-white">Upload Surat
+                                                    Lamaran</label>
+                                                <input type="file" id="fileSuratLamaran" name="fileSuratLamaran"
+                                                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+                                                    accept=".pdf" required>
+                                                @if ($file->fileSuratLamaran)
+                                                    <p class="mt-1 text-sm text-gray-400">Previous File:
+                                                        {{ basename($file->fileSuratLamaran) }}</p>
+                                                @endif
+                                            </div>
+                                        @endif
+
+                                        @if (!$file->verification || !$file->verification->fileCertificate_verified)
+                                            <div>
+                                                <label for="fileCertificate"
+                                                    class="block mb-2 text-sm font-medium text-white">Upload
+                                                    Certificate</label>
+                                                <input type="file" id="fileCertificate" name="fileCertificate"
+                                                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+                                                    accept=".pdf" required>
+                                                @if ($file->fileCertificate)
+                                                    <p class="mt-1 text-sm text-gray-400">Previous File:
+                                                        {{ basename($file->fileCertificate) }}</p>
+                                                @endif
+                                            </div>
+                                        @endif
+
+                                        @if (!$file->verification || !$file->verification->fileFHS_verified)
+                                            <div>
+                                                <label for="fileFHS"
+                                                    class="block mb-2 text-sm font-medium text-white">Upload FHS</label>
+                                                <input type="file" id="fileFHS" name="fileFHS"
+                                                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+                                                    accept=".pdf" required>
+                                                @if ($file->fileFHS)
+                                                    <p class="mt-1 text-sm text-gray-400">Previous File:
+                                                        {{ basename($file->fileFHS) }}</p>
+                                                @endif
+                                            </div>
+                                        @endif
+
+                                        @if (!$file->verification || !$file->verification->fileSuratRekomendasi_verified)
+                                            <div>
+                                                <label for="fileSuratRekomendasi"
+                                                    class="block mb-2 text-sm font-medium text-white">Upload Surat
+                                                    Rekomendasi</label>
+                                                <input type="file" id="fileSuratRekomendasi" name="fileSuratRekomendasi"
+                                                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+                                                    accept=".pdf" required>
+                                                @if ($file->fileSuratRekomendasi)
+                                                    <p class="mt-1 text-sm text-gray-400">Previous File:
+                                                        {{ basename($file->fileSuratRekomendasi) }}</p>
+                                                @endif
+                                            </div>
+                                        @endif
+
+                                        @if (!$file->verification || !$file->verification->fileProductImages_verified)
+                                            <div>
+                                                <label for="fileProductImages"
+                                                    class="block mb-2 text-sm font-medium text-white">Upload Product
+                                                    Images</label>
+                                                <input type="file" id="fileProductImages" name="fileProductImages"
+                                                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+                                                    accept=".pdf" required>
+                                                @if ($file->fileProductImages)
+                                                    <p class="mt-1 text-sm text-gray-400">Previous File:
+                                                        {{ basename($file->fileProductImages) }}</p>
+                                                @endif
+                                            </div>
+                                        @endif
+
+                                        @if (!$file->verification || !$file->verification->fileProduct_verified)
+                                            <div>
+                                                <label for="fileProduct"
+                                                    class="block mb-2 text-sm font-medium text-white">Product Link</label>
+                                                <input type="url" id="fileProduct" name="fileProduct"
+                                                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+                                                    value="{{ $file->fileProduct }}" required>
+                                            </div>
+                                        @endif
                                     </div>
                                     <button type="submit"
                                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
                                 </form>
                             </div>
                         @endif
+
                         @if ($registration->status === 'Diterima')
                             <div class="bg-gray-800 rounded-lg shadow-md">
                                 <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12">

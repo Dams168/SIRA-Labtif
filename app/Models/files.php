@@ -23,6 +23,11 @@ class files extends Model
 
     public function registration()
     {
-        return $this->belongsTo(registration::class, 'registrationId');
+        return $this->belongsTo(Registration::class, 'registrationId');
+    }
+
+    public function verification()
+    {
+        return $this->hasOne(FileVerification::class, 'file_id');
     }
 }
