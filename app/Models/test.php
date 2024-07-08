@@ -9,20 +9,21 @@ class test extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    protected $primaryKey = 'id';
+
     protected $fillable = [
-        'testName',
-        'scoreTest',
+        'testTulis',
+        'wawancaraAsisten',
+        'wawancaraDosen',
+        'registrationId',
     ];
 
-    public function schedule()
+    public function registration()
     {
-        return $this->belongsTo(Schedule::class, 'scheduleId');
+        return $this->belongsTo(registration::class, 'registrationId');
     }
 
-    public function details()
-    {
-        return $this->hasMany(test_detail::class);
-    }
 
     public function result()
     {

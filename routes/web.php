@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Program\FileController;
 use App\Http\Controllers\Program\ProgramController;
 use App\Http\Controllers\Schedule\ScheduleController;
+use App\Http\Controllers\Score\ScoreController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,13 +24,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/file', [FileController::class, 'index'])->name('kelola.file');
     Route::get('/file/{registration}', [FileController::class, 'showVerify'])->name('show.verify');
     Route::post('/file/verify/{registration}', [FileController::class, 'verify'])->name('verify.save');
-    // Route::post('/file/{registration}/rejected', [FileController::class, 'reject'])->name('verify.reject');
-    // Route::post('/file/{registration}/approved', [FileController::class, 'approve'])->name('verify.approve');
 
     //Route Kelola Jadwal
     Route::get('/jadwal', [ScheduleController::class, 'index'])->name('kelola.jadwal');
     Route::get('/jadwal/setting', [ScheduleController::class, 'create'])->name('jadwal.setting');
     Route::post('/jadwal/store', [ScheduleController::class, 'storeOrUpdateAll'])->name('jadwal.storeOrUpdateAll');
+
+    //Route Kelola Nilai
+    Route::get('/nilai', [ScoreController::class, 'index'])->name('kelola.nilai');
+    Route::get('/nilai/create/{registrationId}', [ScoreController::class, 'create'])->name('score.create');
+    Route::post('/nilai/storeOrUpdateAll', [ScoreController::class, 'storeOrUpdateAll'])->name('score.storeOrUpdateAll');
 });
 
 
