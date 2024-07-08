@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Program\FileController;
@@ -14,9 +15,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/program', [ProgramController::class, 'index'])->name('program');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+
+    //Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     //Route Kelola File
     Route::get('/file', [FileController::class, 'index'])->name('kelola.file');
