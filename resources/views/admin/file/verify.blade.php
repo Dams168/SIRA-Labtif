@@ -86,7 +86,7 @@
         </div>
 
         <!-- Modal Reject Registration -->
-        <x-modal name="reject-registration" focusable>
+        {{-- <x-modal name="reject-registration" focusable>
             <h2 class="font-bold text-lg text-white px-6 py-4">Tolak Registrasi</h2>
             <form method="post" x-bind:action="action" enctype="multipart/form-data" class=" px-6">
                 @csrf
@@ -99,7 +99,7 @@
                     <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700">Tolak</button>
                 </div>
             </form>
-        </x-modal>
+        </x-modal> --}}
     </section>
 
 @endsection

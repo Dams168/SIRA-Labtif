@@ -127,10 +127,7 @@ class FileController extends Controller
     public function index()
     {
         $registrations = registration::all();
-        $user = Auth::user();
-        $files = files::all();
-        $courses = course::all();
-        return view('admin.file.index', compact('files', 'registrations', 'courses'));
+        return view('admin.file.index', compact('registrations'));
     }
 
     public function showVerify($id)
@@ -165,7 +162,7 @@ class FileController extends Controller
         // Create or update the verification record
         $fileVerification = $file->verification ?: new FileVerification(['file_id' => $file->id]);
 
-        // Convert "1" to boolean true and absent fields to false
+        // Konversi nilai 1 dari form ke boolean
         $fileVerification->fileCV_verified = isset($validatedData['verification']['fileCV']) ? (bool)$validatedData['verification']['fileCV'] : false;
         $fileVerification->fileSuratLamaran_verified = isset($validatedData['verification']['fileSuratLamaran']) ? (bool)$validatedData['verification']['fileSuratLamaran'] : false;
         $fileVerification->fileCertificate_verified = isset($validatedData['verification']['fileCertificate']) ? (bool)$validatedData['verification']['fileCertificate'] : false;
@@ -175,6 +172,7 @@ class FileController extends Controller
         $fileVerification->fileProduct_verified = isset($validatedData['verification']['fileProduct']) ? (bool)$validatedData['verification']['fileProduct'] : false;
         $fileVerification->save();
 
+        // simpan file yang tidak terverifikasi
         $unverifiedFiles = [];
         if (!$fileVerification->fileCV_verified) $unverifiedFiles[] = 'CV';
         if (!$fileVerification->fileSuratLamaran_verified) $unverifiedFiles[] = 'Surat Lamaran';
@@ -184,7 +182,6 @@ class FileController extends Controller
         if (!$fileVerification->fileProductImages_verified) $unverifiedFiles[] = 'Product Images';
         if (!$fileVerification->fileProduct_verified) $unverifiedFiles[] = 'Link File Product';
 
-        // Update the registration status and note based on verification
         if (empty($unverifiedFiles)) {
             $registration->status = 'Diterima';
             $registration->note = 'Selamat!!! Pendaftaran Anda Diterima silahkan cek secara berkala untuk informasi selanjutnya. Terima kasih telah mendaftar di rekrutmen ini :)';
@@ -196,27 +193,4 @@ class FileController extends Controller
 
         return redirect()->route('kelola.file')->with('success', 'File berhasil diverifikasi.');
     }
-
-
-
-
-    // public function reject(Request $request, Registration $registration)
-    // {
-    //     $registration->update([
-    //         'status' => 'Ditolak',
-    //         'note' => $request->note,
-    //     ]);
-
-    //     return redirect()->route('kelola.file', $registration->id)->with('success', 'Pendaftaran telah ditolak.');
-    // }
-
-    // public function approve(Registration $registration)
-    // {
-    //     $registration->update([
-    //         'status' => 'Diterima',
-    //         'note' => 'Selamat!!! Pendaftaran Anda Diterima silahkan cek secara berkala untuk informasi selanjutnya. Terima kasih telah mendaftar di rekrutmen ini :)',
-    //     ]);
-
-    //     return redirect()->route('kelola.file')->with('success', 'Pendaftaran telah disetujui.');
-    // }
 }

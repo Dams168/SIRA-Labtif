@@ -19,6 +19,7 @@ class SocialiteController extends Controller
     public function handleProvideCallback($provider)
     {
         try {
+            // mengambil informasi pengguna dari provider.
             $user = Socialite::driver($provider)->user();
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'There was an error retrieving your account details.');

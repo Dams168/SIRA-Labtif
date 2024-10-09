@@ -15,7 +15,7 @@
                                 <th scope="col" class="px-3 py-3">Nama</th>
                                 <th scope="col" class="px-3 py-3">Kelas</th>
                                 <th scope="col" class="px-3 py-3">Matkul Minat</th>
-                                <th scope="col" class="px-3 py-3">Status</th>
+                                <th scope="col" class="px-3 py-3">Status Pendaftaran</th>
                             </tr>
                         </thead>
                         <tbody>
