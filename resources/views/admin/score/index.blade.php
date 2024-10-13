@@ -28,9 +28,9 @@
                                     <td class="py-2 px-4">{{ $registration->user->name }}</td>
                                     <td class="py-2 px-4">{{ $registration->class }} - {{ $registration->period }}</td>
                                     <td class="py-2 px-4">{{ $registration->course->name }}</td>
-                                    <td class="py-2 px-4">{{ $registration->test->testTulis }}</td>
-                                    <td class="py-2 px-4">{{ $registration->test->wawancaraAsisten }}</td>
-                                    <td class="py-2 px-4">{{ $registration->test->wawancaraDosen }}</td>
+                                    <td class="py-2 px-4">{{ $registration->test->testTulis ?? '-' }}</td>
+                                    <td class="py-2 px-4">{{ $registration->test->wawancaraAsisten ?? '-' }}</td>
+                                    <td class="py-2 px-4">{{ $registration->test->wawancaraDosen ?? '-' }}</td>
                                     <td class="py-2 px-4">
                                         <x-primary-button tag="a"
                                             href="{{ route('score.create', $registration->id) }}"

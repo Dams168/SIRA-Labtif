@@ -5,7 +5,7 @@
 @section('content')
     <section class="bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12">
-            <h2 class="text-4xl font-medium text-gray-300 pb-6">Tambah Nilai</h2>
+            <h2 class="text-4xl font-medium text-gray-300 pb-6">Tambah Nilai - {{ $registration->user->name }}</h2>
             <form action="{{ route('score.storeOrUpdateAll') }}" method="POST">
                 @csrf
 

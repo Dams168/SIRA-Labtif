@@ -11,7 +11,7 @@ class ScoreController extends Controller
 {
     public function index()
     {
-        $registrations = registration::all();
+        $registrations = Registration::where('status', 'Diterima')->get();;
         $tests = test::all();
         return view('admin.score.index', compact('registrations', 'tests'));
     }
