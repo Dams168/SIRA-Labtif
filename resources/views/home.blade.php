@@ -206,7 +206,7 @@
                 </h2>
             </div>
 
-            <div class="flow-root max-w-3xl mx-auto mt-8 sm:mt-12 lg:mt-16">
+            <div class="flow-root max-w-6xl mx-auto mt-8 sm:mt-12 lg:mt-16">
                 <ol class="items-center sm:flex">
                     <li class="relative mb-6 sm:mb-0">
                         <div class="flex items-center">
@@ -222,8 +222,12 @@
                         </div>
                         <div class="mt-3 sm:pe-8">
                             <h3 class="text-lg font-semibold text-white">Pengumpulan Berkas</h3>
-                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500">TBH</time>
-                            <p class="text-base font-normal text-gray-400">Get started with dozens of web components and
+                            <time
+                                class="block mb-2 text-sm font-normal leading-none text-gray-500">{{ \Carbon\Carbon::parse($information->tglOpenRecruitment)->locale('id')->translatedFormat('d M Y') ?? 'TBD' }}
+                                -
+                                {{ \Carbon\Carbon::parse($information->tglClosedRecruitment)->locale('id')->translatedFormat('d M Y') ?? 'TBD' }}</time>
+                            <p class="text-base font-normal text-gray-400">Get started with dozens of web components
+                                and
                                 interactive elements.</p>
                         </div>
                     </li>
@@ -241,7 +245,8 @@
                         </div>
                         <div class="mt-3 sm:pe-8">
                             <h3 class="text-lg font-semibold text-white">Test Tulis & Praktik</h3>
-                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500">TBH</time>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
+                                {{ \Carbon\Carbon::parse($information->tglTestTulis)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}</time>
                             <p class="text-base font-normal text-gray-400">Get started with dozens of web components and
                                 interactive elements.</p>
                         </div>
@@ -260,7 +265,8 @@
                         </div>
                         <div class="mt-3 sm:pe-8">
                             <h3 class="text-lg font-semibold text-white">Wawancara Asisten</h3>
-                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500">TBH</time>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
+                                {{ \Carbon\Carbon::parse($information->tglWawancaraAsisten)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}</time>
                             <p class="text-base font-normal text-gray-400">Get started with dozens of web components and
                                 interactive elements.</p>
                         </div>
@@ -279,7 +285,8 @@
                         </div>
                         <div class="mt-3 sm:pe-8">
                             <h3 class="text-lg font-semibold text-white">Wawancara Dosen</h3>
-                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500">TBH</time>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
+                                {{ \Carbon\Carbon::parse($information->tglWawancaraDosen)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}</time>
                             <p class="text-base font-normal text-gray-400">Get started with dozens of web components and
                                 interactive elements.</p>
                         </div>
@@ -298,7 +305,8 @@
                         </div>
                         <div class="mt-3 sm:pe-8">
                             <h3 class="text-lg font-semibold text-white">Pengumuman Hasil</h3>
-                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500">TBH</time>
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
+                                {{ \Carbon\Carbon::parse($information->tglPengumumanHasil)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}</time>
                             <p class="text-base font-normal text-gray-400">Get started with dozens of web components and
                                 interactive elements.</p>
                         </div>

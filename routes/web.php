@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Information\InformationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Program\FileController;
 use App\Http\Controllers\Program\ProgramController;
@@ -34,6 +35,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/nilai', [ScoreController::class, 'index'])->name('kelola.nilai');
     Route::get('/nilai/create/{registrationId}', [ScoreController::class, 'create'])->name('score.create');
     Route::post('/nilai/storeOrUpdateAll', [ScoreController::class, 'storeOrUpdateAll'])->name('score.storeOrUpdateAll');
+
+    //Route Kelola Informasi
+    Route::get('/informasi', [InformationController::class, 'index'])->name('kelola.informasi');
+    Route::get('/informasi/create', [InformationController::class, 'create'])->name('informasi.create');
+    Route::post('/informasi/store', [InformationController::class, 'storeOrUpdate'])->name('informasi.storeOrUpdate');
 });
 
 
