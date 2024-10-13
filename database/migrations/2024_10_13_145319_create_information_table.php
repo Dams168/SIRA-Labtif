@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->date('tglOpenRecruitment');
             $table->date('tglClosedRecruitment');
-            $table->date('tglTestTulis');
-            $table->date('tglWawancaraAsisten');
-            $table->date('tglWawancaraDosen');
+            $table->date('tglPraRecruitment');
+            $table->date('tglProsesAwal');
+            $table->date('tglProsesAkhir');
             $table->date('tglPengumumanHasil');
         });
     }

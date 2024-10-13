@@ -173,7 +173,7 @@
                                                             {{ ucwords(str_replace('_', ' ', $schedule->scheduleName)) }}
                                                         </th>
                                                         <td class="px-6 py-4">
-                                                            {{ \Carbon\Carbon::parse($schedule->scheduleDate)->format('d M Y') }}
+                                                            {{ \Carbon\Carbon::parse($schedule->scheduleDate)->locale('id')->translatedFormat('l, d F Y') }}
                                                         </td>
                                                     </tr>
                                                 @endforeach

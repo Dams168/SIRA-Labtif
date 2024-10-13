@@ -9,9 +9,10 @@
             <div class="mr-auto place-self-center lg:col-span-7">
                 <h1
                     class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white">
-                    Rekrutmen Aslabtif
+                    Rekrutmen ASLABTIF
                 </h1>
-                <p class="max-w-2xl mb-6 font-light text-gray-300 lg:mb-8 md:text-lg lg:text-xl">Mari bergabung dengan
+                <p class="max-w-2xl mb-6 font-light text-gray-300 lg:mb-8 md:text-lg lg:text-xl text-justify">Mari bergabung
+                    dengan
                     kami untuk mengasah keterampilan teknis, berkontribusi dalam pengembangan lab, dan menjadi bagian dari
                     komunitas yang bersemangat dan inovatif.
                 </p>
@@ -47,14 +48,15 @@
                         class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white">
                         Asisten Laboratorium
                     </h1>
-                    <p class="max-w-2xl mb-6 font-light text-gray-300 lg:mb-8 md:text-lg lg:text-xl">
+                    <p class="max-w-2xl mb-6 font-light text-gray-300 lg:mb-8 md:text-lg lg:text-xl text-justify">
                         Mari bersama-sama mengukir prestasi dan berkontribusi dalam menciptakan lingkungan belajar yang
                         inspiratif dan produktif.
                     </p>
                 </div>
             </div>
-            <div class="max-w-screen-md mb-8 lg:mb-16">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white">Apa saja manfaat menjadi Aslab?</h2>
+            <div class="max-w-screen-xl mb-8 lg:mb-16">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white">Apa saja manfaat menjadi Asisten
+                    Laboratorium?</h2>
             </div>
             <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
                 <div>
@@ -67,7 +69,8 @@
                         </svg>
                     </div>
                     <h3 class="mb-2 text-xl font-bold text-white">Relasi</h3>
-                    <p class="text-gray-400">Membangun jaringan dengan dosen, keluarga besar ASLABTIF, dan profesional di
+                    <p class="text-gray-400 text-justify">Membangun jaringan dengan dosen, keluarga besar ASLABTIF, dan
+                        profesional di
                         bidang Teknik Informatika.</p>
                 </div>
                 <div>
@@ -80,7 +83,8 @@
                         </svg>
                     </div>
                     <h3 class="mb-2 text-xl font-bold text-white">Keterampilan</h3>
-                    <p class="text-gray-400">Kesempatan untuk meningkatkan keterampilan teknis dan soft skills.</p>
+                    <p class="text-gray-400 text-justify">Kesempatan untuk meningkatkan keterampilan teknis dan soft skills.
+                    </p>
                 </div>
                 <div>
                     <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-gray-800 lg:h-12 lg:w-12">
@@ -95,7 +99,8 @@
                         </svg>
                     </div>
                     <h3 class="mb-2 text-xl font-bold text-white">Pengalaman</h3>
-                    <p class="text-gray-400">Memperoleh pengalaman langsung dalam mengelola dan mengembangkan kegiatan
+                    <p class="text-gray-400 text-justify">Memperoleh pengalaman langsung dalam mengelola dan mengembangkan
+                        kegiatan
                         laboratorium.</p>
                 </div>
             </div>
@@ -182,7 +187,7 @@
             </div>
             <div class="py-8 px-4 mx-auto max-w-screen-xl text-left lg:py-8 lg:px-6">
                 <h2 class="mb-2 text-lg font-semibold text-white">Catatan Lain:</h2>
-                <ul class="max-w-md space-y-1 text-gray-400 list-disc list-inside">
+                <ul class="max-w-4xl space-y-1 text-gray-400 list-disc list-inside text-justify">
                     <li>
                         Bersedia berkomitmen untuk menjalankan tugas dan tanggung jawab sebagai asisten laboratorium.
                     </li>
@@ -191,6 +196,9 @@
                     </li>
                     <li>
                         Memiliki minat dan kemampuan di bidang teknis laboratorium.
+                    </li>
+                    <li>
+                        Setiap keterlambatan dalam tahapan rekrutmen akan menjadi bahan pertimbangan.
                     </li>
                 </ul>
             </div>
@@ -202,11 +210,11 @@
         <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">
             <div class="max-w-3xl mx-auto text-center">
                 <h2 class="text-4xl font-extrabold leading-tight tracking-tight text-white">
-                    Alur Pendaftaran
+                    Jadwal Rekrutmen
                 </h2>
             </div>
 
-            <div class="flow-root max-w-6xl mx-auto mt-8 sm:mt-12 lg:mt-16">
+            <div class="flow-root max-w-7xl mx-auto mt-8 sm:mt-12 lg:mt-16">
                 <ol class="items-center sm:flex">
                     <li class="relative mb-6 sm:mb-0">
                         <div class="flex items-center">
@@ -222,13 +230,13 @@
                         </div>
                         <div class="mt-3 sm:pe-8">
                             <h3 class="text-lg font-semibold text-white">Pengumpulan Berkas</h3>
-                            <time
-                                class="block mb-2 text-sm font-normal leading-none text-gray-500">{{ \Carbon\Carbon::parse($information->tglOpenRecruitment)->locale('id')->translatedFormat('d M Y') ?? 'TBD' }}
+                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
+                                {{ isset($information->tglOpenRecruitment)? \Carbon\Carbon::parse($information->tglOpenRecruitment)->locale('id')->translatedFormat('d F Y'): 'TBD' }}
                                 -
-                                {{ \Carbon\Carbon::parse($information->tglClosedRecruitment)->locale('id')->translatedFormat('d M Y') ?? 'TBD' }}</time>
-                            <p class="text-base font-normal text-gray-400">Get started with dozens of web components
-                                and
-                                interactive elements.</p>
+                                {{ isset($information->tglClosedRecruitment)? \Carbon\Carbon::parse($information->tglClosedRecruitment)->locale('id')->translatedFormat('d F Y'): 'TBD' }}</time>
+                            <p class="text-base font-normal text-gray-400 text-justify">Meliputi berkas berkas yang harus
+                                dikumpulkan
+                                oleh calon asisten</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -244,11 +252,13 @@
                             <div class="hidden sm:flex w-full bg-gray-700 h-0.5"></div>
                         </div>
                         <div class="mt-3 sm:pe-8">
-                            <h3 class="text-lg font-semibold text-white">Test Tulis & Praktik</h3>
+                            <h3 class="text-lg font-semibold text-white">Pra Rekrutmen</h3>
                             <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
-                                {{ \Carbon\Carbon::parse($information->tglTestTulis)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}</time>
-                            <p class="text-base font-normal text-gray-400">Get started with dozens of web components and
-                                interactive elements.</p>
+                                {{ isset($information->tglPraRecruitment)? \Carbon\Carbon::parse($information->tglPraRecruitment)->locale('id')->translatedFormat('d F Y'): 'TBD' }}
+                            </time>
+                            <p class="text-base font-normal text-gray-400 text-justify">Meliputi Sosialisasi acara kepada
+                                seluruh calon
+                                asisten</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -264,31 +274,15 @@
                             <div class="hidden sm:flex w-full bg-gray-700 h-0.5"></div>
                         </div>
                         <div class="mt-3 sm:pe-8">
-                            <h3 class="text-lg font-semibold text-white">Wawancara Asisten</h3>
+                            <h3 class="text-lg font-semibold text-white">Tahap Pelaksanaan</h3>
                             <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
-                                {{ \Carbon\Carbon::parse($information->tglWawancaraAsisten)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}</time>
-                            <p class="text-base font-normal text-gray-400">Get started with dozens of web components and
-                                interactive elements.</p>
-                        </div>
-                    </li>
-                    <li class="relative mb-6 sm:mb-0">
-                        <div class="flex items-center">
-                            <div
-                                class="z-10 flex items-center justify-center w-6 h-6 bg-blue-900 rounded-full ring-0 ring-gray-900 sm:ring-8 shrink-0">
-                                <svg class="w-2.5 h-2.5 text-blue-300" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                </svg>
-                            </div>
-                            <div class="hidden sm:flex w-full bg-gray-700 h-0.5"></div>
-                        </div>
-                        <div class="mt-3 sm:pe-8">
-                            <h3 class="text-lg font-semibold text-white">Wawancara Dosen</h3>
-                            <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
-                                {{ \Carbon\Carbon::parse($information->tglWawancaraDosen)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}</time>
-                            <p class="text-base font-normal text-gray-400">Get started with dozens of web components and
-                                interactive elements.</p>
+                                {{ isset($information->tglProsesAwal)? \Carbon\Carbon::parse($information->tglProsesAwal)->locale('id')->translatedFormat('d F Y'): 'TBD' }}
+                                -
+                                {{ isset($information->tglProsesAkhir)? \Carbon\Carbon::parse($information->tglProsesAkhir)->locale('id')->translatedFormat('d F Y'): 'TBD' }}
+                            </time>
+                            <p class="text-base font-normal text-gray-400 text-justify">Dimulai dari test tulis & Praktik,
+                                Wawancara
+                                Bersama Asisten dan Wawancara Bersama Dosen</p>
                         </div>
                     </li>
                     <li class="relative mb-6 sm:mb-0">
@@ -306,9 +300,98 @@
                         <div class="mt-3 sm:pe-8">
                             <h3 class="text-lg font-semibold text-white">Pengumuman Hasil</h3>
                             <time class="block mb-2 text-sm font-normal leading-none text-gray-500">
-                                {{ \Carbon\Carbon::parse($information->tglPengumumanHasil)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}</time>
-                            <p class="text-base font-normal text-gray-400">Get started with dozens of web components and
-                                interactive elements.</p>
+                                {{ isset($information->tglPengumumanHasil)? \Carbon\Carbon::parse($information->tglPengumumanHasil)->locale('id')->translatedFormat('d F Y'): 'TBD' }}</time>
+                            <p class="text-base font-normal text-gray-400 text-justify">Meliputi Pengumuman dari hasil
+                                rekrutment yang
+                                akan diumumkan di akun masing masing calon asisten</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+            {{-- Alur Penerimaan --}}
+            <div class="max-w-3xl mx-auto text-center mt-20">
+                <h2 class="text-4xl font-extrabold leading-tight tracking-tight text-white">
+                    Alur Penerimaan Asisten
+                </h2>
+            </div>
+
+            <div class="flow-root max-w-7xl mx-auto mt-8 sm:mt-12 lg:mt-16">
+                <ol class="items-center sm:flex">
+                    <li class="relative mb-6 sm:mb-0">
+                        <div class="flex items-center">
+                            <div
+                                class="z-10 flex items-center justify-center w-6 h-6 bg-blue-900 rounded-full ring-0 ring-gray-900 sm:ring-8 shrink-0">
+                                <svg class="w-2.5 h-2.5 text-blue-300" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                </svg>
+                            </div>
+                            <div class="hidden sm:flex w-full bg-gray-700 h-0.5"></div>
+                        </div>
+                        <div class="mt-3 sm:pe-8">
+                            <h3 class="text-lg font-semibold text-white">Pengumpulan Berkas</h3>
+                            <p class="text-base font-normal text-gray-400 text-justify">Meliputi berkas CV, Surat Lamaran,
+                                Sertifikat,
+                                Screenshot Produk, Pas Photo, </p>
+                        </div>
+                    </li>
+                    <li class="relative mb-6 sm:mb-0">
+                        <div class="flex items-center">
+                            <div
+                                class="z-10 flex items-center justify-center w-6 h-6 bg-blue-900 rounded-full ring-0 ring-gray-900 sm:ring-8 shrink-0">
+                                <svg class="w-2.5 h-2.5 text-blue-300" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                </svg>
+                            </div>
+                            <div class="hidden sm:flex w-full bg-gray-700 h-0.5"></div>
+                        </div>
+                        <div class="mt-3 sm:pe-8">
+                            <h3 class="text-lg font-semibold text-white">Test Tulis & Praktik</h3>
+                            <p class="text-base font-normal text-gray-400 text-justify">Meliputi Psikotes, Pengetahuan
+                                Umum, Pengetahuan
+                                Minatan dan Praktik</p>
+                        </div>
+                    </li>
+                    <li class="relative mb-6 sm:mb-0">
+                        <div class="flex items-center">
+                            <div
+                                class="z-10 flex items-center justify-center w-6 h-6 bg-blue-900 rounded-full ring-0 ring-gray-900 sm:ring-8 shrink-0">
+                                <svg class="w-2.5 h-2.5 text-blue-300" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                </svg>
+                            </div>
+                            <div class="hidden sm:flex w-full bg-gray-700 h-0.5"></div>
+                        </div>
+                        <div class="mt-3 sm:pe-8">
+                            <h3 class="text-lg font-semibold text-white">Wawancara Asisten</h3>
+                            <p class="text-base font-normal text-gray-400 text-justify">Wawancara Bersama Asisten Meliputi
+                                Motivasi dan
+                                Kesiapan Mengajar di Lab</p>
+                        </div>
+                    </li>
+                    <li class="relative mb-6 sm:mb-0">
+                        <div class="flex items-center">
+                            <div
+                                class="z-10 flex items-center justify-center w-6 h-6 bg-blue-900 rounded-full ring-0 ring-gray-900 sm:ring-8 shrink-0">
+                                <svg class="w-2.5 h-2.5 text-blue-300" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                </svg>
+                            </div>
+                            <div class="hidden sm:flex w-full bg-gray-700 h-0.5"></div>
+                        </div>
+                        <div class="mt-3 sm:pe-8">
+                            <h3 class="text-lg font-semibold text-white">Wawancara Dosen</h3>
+                            <p class="text-base font-normal text-gray-400 text-justify">Wawancara Bersama Dosen Meliputi
+                                Pengetahuan dan
+                                Kesiapan Menjadi Asisten Laboratorium</p>
                         </div>
                     </li>
                 </ol>

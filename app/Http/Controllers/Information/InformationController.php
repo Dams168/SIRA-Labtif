@@ -24,9 +24,9 @@ class InformationController extends Controller
         $validated = $request->validate([
             'tglOpenRecruitment' => 'required|date',
             'tglClosedRecruitment' => 'required|date',
-            'tglTestTulis' => 'required|date',
-            'tglWawancaraAsisten' => 'required|date',
-            'tglWawancaraDosen' => 'required|date',
+            'tglPraRecruitment' => 'required|date',
+            'tglProsesAwal' => 'required|date',
+            'tglProsesAkhir' => 'required|date',
             'tglPengumumanHasil' => 'required|date',
         ]);
 
@@ -35,9 +35,9 @@ class InformationController extends Controller
             [
                 'tglOpenRecruitment' => $validated['tglOpenRecruitment'],
                 'tglClosedRecruitment' => $validated['tglClosedRecruitment'],
-                'tglTestTulis' => $validated['tglTestTulis'],
-                'tglWawancaraAsisten' => $validated['tglWawancaraAsisten'],
-                'tglWawancaraDosen' => $validated['tglWawancaraDosen'],
+                'tglPraRecruitment' => $validated['tglPraRecruitment'],
+                'tglProsesAwal' => $validated['tglProsesAwal'],
+                'tglProsesAkhir' => $validated['tglProsesAkhir'],
                 'tglPengumumanHasil' => $validated['tglPengumumanHasil'],
             ]
         );

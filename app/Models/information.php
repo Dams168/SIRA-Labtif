@@ -14,9 +14,9 @@ class information extends Model
     protected $fillable = [
         'tglOpenRecruitment',
         'tglClosedRecruitment',
-        'tglTestTulis',
-        'tglWawancaraAsisten',
-        'tglWawancaraDosen',
+        'tglPraRecruitment',
+        'tglProsesAwal',
+        'tglProsesAkhir',
         'tglPengumumanHasil',
     ];
 }

@@ -20,18 +20,18 @@
                         class="border border-gray-600 rounded-md px-3 py-2 mt-1 mb-3 w-full sm:w-1/2 lg:w-1/3 bg-gray-800 text-gray-200">
                 </div>
                 <div>
-                    <label for="tglTestTulis" class="block text-gray-300">Tanggal Test Tulis Dan Praktik:</label>
-                    <input type="date" name="tglTestTulis" id="tglTestTulis"
+                    <label for="tglPraRecruitment" class="block text-gray-300">Tanggal Pra Recruitment:</label>
+                    <input type="date" name="tglPraRecruitment" id="tglPraRecruitment"
                         class="border border-gray-600 rounded-md px-3 py-2 mt-1 mb-3 w-full sm:w-1/2 lg:w-1/3 bg-gray-800 text-gray-200">
                 </div>
                 <div>
-                    <label for="tglWawancaraAsisten" class="block text-gray-300">Tanggal Wawancara Asisten:</label>
-                    <input type="date" name="tglWawancaraAsisten" id="tglWawancaraAsisten"
+                    <label for="tglProsesAwal" class="block text-gray-300">Tanggal Proses Awal Rekrutmen:</label>
+                    <input type="date" name="tglProsesAwal" id="tglProsesAwal"
                         class="border border-gray-600 rounded-md px-3 py-2 mt-1 mb-3 w-full sm:w-1/2 lg:w-1/3 bg-gray-800 text-gray-200">
                 </div>
                 <div>
-                    <label for="tglWawancaraDosen" class="block text-gray-300">Tanggal Wawancara Dosen:</label>
-                    <input type="date" name="tglWawancaraDosen" id="tglWawancaraDosen"
+                    <label for="tglProsesAkhir" class="block text-gray-300">Tanggal Proses Akhir Rekrutmen:</label>
+                    <input type="date" name="tglProsesAkhir" id="tglProsesAkhir"
                         class="border border-gray-600 rounded-md px-3 py-2 mt-1 mb-3 w-full sm:w-1/2 lg:w-1/3 bg-gray-800 text-gray-200">
                 </div>
                 <div>

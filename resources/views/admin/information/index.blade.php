@@ -16,33 +16,32 @@
                             <tr>
                                 <th scope="col" class="px-3 py-3">Tanggal Open Recruitment</th>
                                 <th scope="col" class="px-3 py-3">Tanggal Close Recruitment</th>
-                                <th scope="col" class="px-3 py-3">Tanggal Test Tulis Dan Praktik</th>
-                                <th scope="col" class="px-3 py-3">Tanggal Wawancara Asisten</th>
-                                <th scope="col" class="px-3 py-3">Tanggal Wawancara Dosen</th>
+                                <th scope="col" class="px-3 py-3">Tanggal Pra Recruitment</th>
+                                <th scope="col" class="px-3 py-3">Tanggal Proses Awal Recruitment</th>
+                                <th scope="col" class="px-3 py-3">Tanggal Proses Akhir Recruitment</th>
                                 <th scope="col" class="px-3 py-3">Tanggal Pengumuman Hasil</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="text-center bg-gray-800 border-b border-gray-700">
                                 <td class="py-2 px-4">
-                                    {{ \Carbon\Carbon::parse($information->tglOpenRecruitment)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}
+                                    {{ isset($information->tglOpenRecruitment)? \Carbon\Carbon::parse($information->tglOpenRecruitment)->locale('id')->translatedFormat('d F Y'): 'TBD' }}
                                 </td>
                                 <td class="py-2 px-4">
-                                    {{ \Carbon\Carbon::parse($information->tglClosedRecruitment)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}
+                                    {{ isset($information->tglClosedRecruitment)? \Carbon\Carbon::parse($information->tglClosedRecruitment)->locale('id')->translatedFormat('d F Y'): 'TBD' }}
                                 </td>
                                 <td class="py-2 px-4">
-                                    {{ \Carbon\Carbon::parse($information->tglTestTulis)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}
+                                    {{ isset($information->tglPraRecruitment)? \Carbon\Carbon::parse($information->tglPraRecruitment)->locale('id')->translatedFormat('d F Y'): 'TBD' }}
                                 </td>
                                 <td class="py-2 px-4">
-                                    {{ \Carbon\Carbon::parse($information->tglWawancaraAsisten)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}
+                                    {{ isset($information->tglProsesAwal)? \Carbon\Carbon::parse($information->tglProsesAwal)->locale('id')->translatedFormat('d F Y'): 'TBD' }}
                                 </td>
                                 <td class="py-2 px-4">
-                                    {{ \Carbon\Carbon::parse($information->tglWawancaraDosen)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}
+                                    {{ isset($information->tglProsesAkhir)? \Carbon\Carbon::parse($information->tglProsesAkhir)->locale('id')->translatedFormat('d F Y'): 'TBD' }}
                                 </td>
                                 <td class="py-2 px-4">
-                                    {{ \Carbon\Carbon::parse($information->tglPengumumanHasil)->locale('id')->translatedFormat('d F Y') ?? 'TBD' }}
+                                    {{ isset($information->tglPengumumanHasil)? \Carbon\Carbon::parse($information->tglPengumumanHasil)->locale('id')->translatedFormat('d F Y'): 'TBD' }}
                                 </td>
-
                             </tr>
                         </tbody>
                     </table>
