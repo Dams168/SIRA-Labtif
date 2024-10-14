@@ -94,6 +94,20 @@
                     Kelola Informasi
                 </a>
             </li>
+            <li>
+                <a href="{{ route('kelola.course') }}"
+                    class="w-full text-start flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-400 rounded-lg hover:bg-neutral-700 hover:text-neutral-300 hs-accordion-active:text-white">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M15.5 2H8.6c-.4 0-.8.2-1.1.5-.3.3-.5.7-.5 1.1v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8c.4 0 .8-.2 1.1-.5.3-.3.5-.7.5-1.1V6.5L15.5 2z" />
+                        <path d="M3 7.6v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8" />
+                        <path d="M15 2v5h5" />
+                    </svg>
+                    Kelola Mata Kuliah
+                </a>
+            </li>
         </ul>
     </nav>
 </div>

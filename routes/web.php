@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\Course\CourseController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Information\InformationController;
@@ -40,6 +41,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/informasi', [InformationController::class, 'index'])->name('kelola.informasi');
     Route::get('/informasi/create', [InformationController::class, 'create'])->name('informasi.create');
     Route::post('/informasi/store', [InformationController::class, 'storeOrUpdate'])->name('informasi.storeOrUpdate');
+
+    //Route Kelola Course
+    Route::get('/course', [CourseController::class, 'index'])->name('kelola.course');
+    Route::get('/course/create', [CourseController::class, 'create'])->name('course.create');
+    Route::post('/course/store', [CourseController::class, 'store'])->name('course.store');
+    Route::get('/course/edit/{course}', [CourseController::class, 'edit'])->name('course.edit');
+    Route::match((['put', 'patch']), '/course/update/{course}', [CourseController::class, 'update'])->name('course.update');
+    Route::delete('/course/delete/{course}', [CourseController::class, 'destroy'])->name('course.destroy');
 });
 
 

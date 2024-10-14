@@ -14,11 +14,31 @@ class CourseSeeder extends Seeder
     public function run(): void
     {
         DB::table('courses')->insert([
-            ['name' => 'Struktur Data'],
-            ['name' => 'Jaringan Komputer'],
-            ['name' => 'Pemrograman Berbasis Objek'],
-            ['name' => 'Multimedia'],
-            ['name' => 'Pemrograman Web'],
+            [
+                'name' => 'Struktur Data',
+                'image' => 'assets/images/program/sd.jpg',
+                'description' => 'Mempelajari berbagai cara menyimpan dan mengelola data secara efisien.'
+            ],
+            [
+                'name' => 'Jaringan Komputer',
+                'image' => 'assets/images/program/jarkom.jpg',
+                'description' => 'Mengenal dasar-dasar jaringan komputer dan cara membangun koneksi yang aman dan stabil.'
+            ],
+            [
+                'name' => 'Pemrograman Berorientasi Objek',
+                'image' => 'assets/images/program/pbo.jpg',
+                'description' => 'Memahami konsep dasar pemrograman yang berfokus pada objek dan kelas.'
+            ],
+            [
+                'name' => 'Multimedia',
+                'image' => 'assets/images/program/multi.jpg',
+                'description' => 'Belajar menggabungkan teks, gambar, audio, dan video untuk membuat konten menarik.'
+            ],
+            [
+                'name' => 'Pemrograman Web',
+                'image' => 'assets/images/program/pwd.jpg',
+                'description' => 'Mempelajari cara membuat dan mengelola situs web interaktif.'
+            ],
         ]);
     }
 }

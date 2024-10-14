@@ -9,6 +9,13 @@ class course extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    protected $fillable = [
+        'name',
+        'description',
+        'image',
+    ];
+
     public function registration()
     {
         return $this->hasOne(registration::class, 'courseId');

@@ -63,18 +63,6 @@ class FileController extends Controller
         $courseId = $registration->course->id;
         $schedules = schedule::where('registrationId', $registrationId)->get();
 
-        $images = [
-            1 => 'assets/images/program/sd.jpg',
-            2 => 'assets/images/program/jarkom.jpg',
-            3 => 'assets/images/program/pbo.jpg',
-            4 => 'assets/images/program/multi.jpg',
-            5 => 'assets/images/program/pwd.jpg',
-        ];
-
-        foreach ($courses as $course) {
-            $course->image = $images[$courseId] ?? 'assets/images/bg-hero.jpeg';
-        }
-
         $course = $courses->where('id', $courseId)->first();
         $file = $registration->file;
 
