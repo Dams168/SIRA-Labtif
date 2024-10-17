@@ -20,7 +20,6 @@ return new class extends Migration
             $table->boolean('fileSuratLamaran_verified')->default(false);
             $table->boolean('fileCertificate_verified')->default(false);
             $table->boolean('fileFHS_verified')->default(false);
-            $table->boolean('fileSuratRekomendasi_verified')->default(false);
             $table->boolean('fileProductImages_verified')->default(false);
             $table->boolean('fileProduct_verified')->default(false);
 

@@ -31,7 +31,6 @@ class FileController extends Controller
             'fileSuratLamaran' => 'required|file|mimes:pdf|max:2048',
             'fileCertificate' => 'required|file|mimes:pdf|max:2048',
             'fileFHS' => 'required|file|mimes:pdf|max:2048',
-            'fileSuratRekomendasi' => 'required|file|mimes:pdf|max:2048',
             'fileProductImages' => 'required|file|mimes:pdf|max:2048',
             'fileProduct' => 'required|url',
         ]);
@@ -81,7 +80,6 @@ class FileController extends Controller
             'fileSuratLamaran' => 'nullable|file|mimes:pdf|max:2048',
             'fileCertificate' => 'nullable|file|mimes:pdf|max:2048',
             'fileFHS' => 'nullable|file|mimes:pdf|max:2048',
-            'fileSuratRekomendasi' => 'nullable|file|mimes:pdf|max:2048',
             'fileProductImages' => 'nullable|file|mimes:pdf|max:2048',
             'fileProduct' => 'nullable|url',
         ]);
@@ -134,7 +132,6 @@ class FileController extends Controller
             'verification.fileSuratLamaran' => 'nullable|boolean',
             'verification.fileCertificate' => 'nullable|boolean',
             'verification.fileFHS' => 'nullable|boolean',
-            'verification.fileSuratRekomendasi' => 'nullable|boolean',
             'verification.fileProductImages' => 'nullable|boolean',
             'verification.fileProduct' => 'nullable|boolean',
         ]);
@@ -155,7 +152,6 @@ class FileController extends Controller
         $fileVerification->fileSuratLamaran_verified = isset($validatedData['verification']['fileSuratLamaran']) ? (bool)$validatedData['verification']['fileSuratLamaran'] : false;
         $fileVerification->fileCertificate_verified = isset($validatedData['verification']['fileCertificate']) ? (bool)$validatedData['verification']['fileCertificate'] : false;
         $fileVerification->fileFHS_verified = isset($validatedData['verification']['fileFHS']) ? (bool)$validatedData['verification']['fileFHS'] : false;
-        $fileVerification->fileSuratRekomendasi_verified = isset($validatedData['verification']['fileSuratRekomendasi']) ? (bool)$validatedData['verification']['fileSuratRekomendasi'] : false;
         $fileVerification->fileProductImages_verified = isset($validatedData['verification']['fileProductImages']) ? (bool)$validatedData['verification']['fileProductImages'] : false;
         $fileVerification->fileProduct_verified = isset($validatedData['verification']['fileProduct']) ? (bool)$validatedData['verification']['fileProduct'] : false;
         $fileVerification->save();
@@ -166,7 +162,6 @@ class FileController extends Controller
         if (!$fileVerification->fileSuratLamaran_verified) $unverifiedFiles[] = 'Surat Lamaran';
         if (!$fileVerification->fileCertificate_verified) $unverifiedFiles[] = 'Certificate';
         if (!$fileVerification->fileFHS_verified) $unverifiedFiles[] = 'FHS';
-        if (!$fileVerification->fileSuratRekomendasi_verified) $unverifiedFiles[] = 'Surat Rekomendasi';
         if (!$fileVerification->fileProductImages_verified) $unverifiedFiles[] = 'Product Images';
         if (!$fileVerification->fileProduct_verified) $unverifiedFiles[] = 'Link File Product';
 

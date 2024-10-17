@@ -14,7 +14,6 @@ class fileVerification extends Model
         'fileSuratLamaran_verified',
         'fileCertificate_verified',
         'fileFHS_verified',
-        'fileSuratRekomendasi_verified',
         'fileProductImages_verified',
         'fileProduct_verified'
     ];

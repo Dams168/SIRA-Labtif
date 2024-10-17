@@ -98,21 +98,6 @@
                                             </div>
                                         @endif
 
-                                        @if (!$file->verification || !$file->verification->fileSuratRekomendasi_verified)
-                                            <div>
-                                                <label for="fileSuratRekomendasi"
-                                                    class="block mb-2 text-sm font-medium text-white">Upload Surat
-                                                    Rekomendasi</label>
-                                                <input type="file" id="fileSuratRekomendasi" name="fileSuratRekomendasi"
-                                                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                                                    accept=".pdf" required>
-                                                @if ($file->fileSuratRekomendasi)
-                                                    <p class="mt-1 text-sm text-gray-400">Previous File:
-                                                        {{ basename($file->fileSuratRekomendasi) }}</p>
-                                                @endif
-                                            </div>
-                                        @endif
-
                                         @if (!$file->verification || !$file->verification->fileProductImages_verified)
                                             <div>
                                                 <label for="fileProductImages"

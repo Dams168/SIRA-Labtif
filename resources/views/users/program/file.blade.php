@@ -36,13 +36,6 @@
                             accept=".pdf" required>
                     </div>
                     <div>
-                        <label for="fileSuratRekomendasi" class="block mb-2 text-sm font-medium text-white">Upload Surat
-                            Rekomendasi</label>
-                        <input type="file" id="fileSuratRekomendasi" name="fileSuratRekomendasi"
-                            class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                            accept=".pdf" required>
-                    </div>
-                    <div>
                         <label for="fileProductImages" class="block mb-2 text-sm font-medium text-white">Upload Product
                             Images</label>
                         <input type="file" id="fileProductImages" name="fileProductImages"

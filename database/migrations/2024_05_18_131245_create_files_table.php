@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('fileSuratLamaran');
             $table->string('fileCertificate');
             $table->string('fileFHS');
-            $table->string('fileSuratRekomendasi')->nullable();
             $table->string('fileProductImages');
             $table->string('fileProduct');
 

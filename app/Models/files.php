@@ -16,7 +16,6 @@ class files extends Model
         'fileSuratLamaran',
         'fileCertificate',
         'fileFHS',
-        'fileSuratRekomendasi',
         'fileProductImages',
         'fileProduct'
     ];
