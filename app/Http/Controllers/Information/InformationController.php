@@ -42,6 +42,11 @@ class InformationController extends Controller
             ]
         );
 
-        return redirect()->route('kelola.informasi')->with('success', 'Data informasi berhasil disimpan.');
+        $notification = array(
+            'message' => 'Data informasi berhasil disimpan.',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('kelola.informasi')->with($notification);
     }
 }

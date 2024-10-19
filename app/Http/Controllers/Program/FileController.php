@@ -52,7 +52,16 @@ class FileController extends Controller
             files::create(array_merge($validated, ['registrationId' => $registration->id]));
         }
 
-        return redirect()->route('kegiatanku', $registration->id)->with('success', 'File berhasil diupload');
+        $notification = array(
+            'message' => 'File berhasil diupload',
+            'alert-type' => 'success'
+        );
+
+        if ($request->save == true) {
+            return redirect()->route('kegiatanku', $registration->id)->with($notification);
+        } else {
+            return redirect()->route('file.create', $registration->id)->with($notification);
+        }
     }
 
     public function show($registrationId)
@@ -104,7 +113,12 @@ class FileController extends Controller
 
         Files::where('registrationId', $registration->id)->update($fileData);
 
-        return redirect()->route('kegiatanku', $registration->id)->with('success', 'Status berhasil diupdate');
+        $notification = array(
+            'message' => 'File berhasil diupdate',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('kegiatanku', $registration->id)->with($notification);
     }
 
 
@@ -174,6 +188,10 @@ class FileController extends Controller
         }
         $registration->save();
 
-        return redirect()->route('kelola.file')->with('success', 'File berhasil diverifikasi.');
+        $notification = array(
+            'message' => 'File berhasil diverifikasi',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('kelola.file')->with($notification);
     }
 }

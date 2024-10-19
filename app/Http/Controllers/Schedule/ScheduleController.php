@@ -51,6 +51,11 @@ class ScheduleController extends Controller
             }
         }
 
-        return redirect()->route('kelola.jadwal')->with('success', 'Jadwal berhasil diatur untuk semua pendaftar yang diterima.');
+        $notification = array(
+            'message' => 'Jadwal berhasil diatur untuk semua pendaftar yang diterima.',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('kelola.jadwal')->with($notification);
     }
 }

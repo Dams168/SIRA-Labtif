@@ -55,12 +55,17 @@ class ProgramController extends Controller
             $validated['photo'] = basename($path);
         }
 
+        $notification = array(
+            'message' => 'Registration successful',
+            'alert-type' => 'success'
+        );
+
         if (Auth::user()->registration) {
             Auth::user()->registration->update($validated);
-            return redirect()->route('file.create', ['registration' => Auth::user()->registration->id])->with('success', 'Registration successful');
+            return redirect()->route('file.create', ['registration' => Auth::user()->registration->id])->with($notification);
         } else {
             $registration = registration::create($validated);
-            return redirect()->route('file.create', ['registration' => $registration->id])->with('success', 'Registration successful');
+            return redirect()->route('file.create', ['registration' => $registration->id])->with($notification);
         }
     }
 }

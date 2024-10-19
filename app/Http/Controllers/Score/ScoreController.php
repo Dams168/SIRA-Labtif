@@ -42,6 +42,11 @@ class ScoreController extends Controller
             ]
         );
 
-        return redirect()->route('kelola.nilai')->with('success', 'Data nilai berhasil disimpan.');
+        $notification = array(
+            'message' => 'Data nilai berhasil disimpan.',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('kelola.nilai')->with($notification);
     }
 }

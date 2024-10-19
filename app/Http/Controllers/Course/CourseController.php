@@ -44,7 +44,16 @@ class CourseController extends Controller
 
         course::create($validated);
 
-        return redirect()->route('kelola.course')->with('success', 'Course created successfully');
+        $notification = array(
+            'message' => 'Course created successfully',
+            'alert-type' => 'success'
+        );
+
+        if ($request->save == true) {
+            return redirect()->route('kelola.course')->with($notification);
+        } else {
+            return redirect()->route('admin.course.create')->with($notification);
+        }
     }
 
     public function edit($id)
@@ -76,7 +85,12 @@ class CourseController extends Controller
         }
         $course->update($validated);
 
-        return redirect()->route('kelola.course')->with('success', 'Course updated successfully');
+        $notification = array(
+            'message' => 'Course updated successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('kelola.course')->with($notification);
     }
 
     public function destroy($id)
@@ -86,6 +100,11 @@ class CourseController extends Controller
 
         Storage::delete('public/course/' . basename($course->image));
 
-        return redirect()->route('kelola.course')->with('success', 'Course deleted successfully');
+        $notification = array(
+            'message' => 'Course deleted successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('kelola.course')->with($notification);
     }
 }
