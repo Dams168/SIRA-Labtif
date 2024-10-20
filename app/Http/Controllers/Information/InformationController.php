@@ -22,12 +22,12 @@ class InformationController extends Controller
     public function storeOrUpdate(Request $request)
     {
         $validated = $request->validate([
-            'tglOpenRecruitment' => 'required|date',
-            'tglClosedRecruitment' => 'required|date',
-            'tglPraRecruitment' => 'required|date',
-            'tglProsesAwal' => 'required|date',
-            'tglProsesAkhir' => 'required|date',
-            'tglPengumumanHasil' => 'required|date',
+            'tglOpenRecruitment' => 'nullable|date',
+            'tglClosedRecruitment' => 'nullable|date',
+            'tglPraRecruitment' => 'nullable|date',
+            'tglProsesAwal' => 'nullable|date',
+            'tglProsesAkhir' => 'nullable|date',
+            'tglPengumumanHasil' => 'nullable|date',
         ]);
 
         $information = information::updateOrCreate(
