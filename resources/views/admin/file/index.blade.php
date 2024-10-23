@@ -26,7 +26,7 @@
                                 @if ($registration->status === 'Menunggu')
                                     <tr class="text-center bg-gray-800 border-b border-gray-700">
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $registration->user->name }}</td>
+                                        <td>{{ $registration->name }}</td>
                                         <td>{{ $registration->npm }}</td>
                                         <td>{{ $registration->class }}</td>
                                         <td>{{ $registration->period }}</td>

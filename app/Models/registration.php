@@ -11,7 +11,17 @@ class registration extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        'userId', 'npm', 'class', 'period', 'phone', 'regDate', 'photo', 'courseId', 'status', 'note'
+        'userId',
+        'name',
+        'npm',
+        'class',
+        'period',
+        'phone',
+        'regDate',
+        'photo',
+        'courseId',
+        'status',
+        'note'
     ];
 
     public function user()

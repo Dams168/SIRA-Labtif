@@ -35,7 +35,7 @@ class FileController extends Controller
             'fileProduct' => 'required|url',
         ]);
 
-        $username = Auth::user()->name;
+        $username = $registration->name;
 
         foreach ($validated as $key => $value) {
             if ($request->hasFile($key)) {
@@ -93,7 +93,7 @@ class FileController extends Controller
             'fileProduct' => 'nullable|url',
         ]);
 
-        $username = Auth::user()->name;
+        $username = $registration->name;
         $fileData = [];
 
         foreach ($validated as $key => $value) {
@@ -141,7 +141,7 @@ class FileController extends Controller
     public function verify(Request $request, $registrationId)
     {
         $validatedData = $request->validate([
-            'verification' => 'required|array',
+            'verification' => 'nullable|array',
             'verification.fileCV' => 'nullable|boolean',
             'verification.fileSuratLamaran' => 'nullable|boolean',
             'verification.fileCertificate' => 'nullable|boolean',

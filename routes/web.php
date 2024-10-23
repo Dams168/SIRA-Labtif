@@ -67,6 +67,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     //Route Profile
     Route::get('/userprofile/{id}', [UserProfileController::class, 'index'])->name('userprofile');
+    Route::get('/userprofile/{id}/edit', [UserProfileController::class, 'edit'])->name('userprofile.edit');
+    Route::match(['put', 'patch'], '/userprofile/update/{id}', [UserProfileController::class, 'update'])->name('userprofile.update');
 
 
     // Route not registered

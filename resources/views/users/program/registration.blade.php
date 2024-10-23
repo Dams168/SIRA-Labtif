@@ -6,12 +6,21 @@
     <section class="bg-gray-900 antialiased p-6">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
             <div class="max-w-screen-md mb-8 lg:mb-16">
-                <h2 class="mb-4 text-3xl tracking-tight font-bold text-white">Form Daftar Asisten</h2>
+                <h2 class="mb-4 text-3xl tracking-tight font-bold text-white">Form Daftar Asisten - {{ $course->name }}</h2>
             </div>
             <form method="POST" action="{{ route('registration.store', $course->id) }}" enctype="multipart/form-data"
                 class="mt-6 space-y-6">
                 @csrf
                 <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label for="name" class="block mb-2 text-sm font-medium text-white">Nama</label>
+                        <input type="text" id="name" name="name"
+                            class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
+                            placeholder="Nama" value="{{ old('name') }}" required />
+                        @error('name')
+                            <div class="mt-2 text-red-500 text-sm">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <div>
                         <label for="npm" class="block mb-2 text-sm font-medium text-white">NPM</label>
                         <input type="text" id="npm" name="npm"
@@ -62,12 +71,6 @@
                         @error('photo')
                             <div class="mt-2 text-red-500 text-sm">{{ $message }}</div>
                         @enderror
-                    </div>
-                    <div>
-                        <label for="course" class="block mb-2 text-sm font-medium text-white">Mata Kuliah Minatan</label>
-                        <input type="text" id="course" name="course"
-                            class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                            value="{{ $course->name }}" required readonly />
                     </div>
                 </div>
                 <button type="submit"

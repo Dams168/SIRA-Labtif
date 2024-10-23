@@ -51,7 +51,7 @@
                                 class="z-50 absolute right-0 mt-2 w-48 bg-gray-700 border border-gray-600 divide-y divide-gray-600 rounded-lg shadow"
                                 id="user-dropdown">
                                 <div class="px-4 py-3">
-                                    <span class="block text-sm text-white">{{ Auth::user()->name }}</span>
+                                    {{-- <span class="block text-sm text-white">{{ Auth::user()->name }}</span> --}}
                                     <span class="block text-sm text-gray-400 truncate">{{ Auth::user()->email }}</span>
                                 </div>
                                 <ul class="py-2" aria-labelledby="user-menu-button">
@@ -139,7 +139,8 @@
 
             @if (Route::has('login'))
                 @auth
-                    <a href="#" class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
+                    <a href="{{ route('userprofile', Auth::user()->id) }}"
+                        class="flex flex-col items-center justify-center flex-1 hover:bg-gray-800">
                         <svg class="w-5 h-5 mb-2 text-gray-400 group-hover:text-blue-500" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                             <path

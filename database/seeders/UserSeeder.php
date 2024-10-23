@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
     {
         $adminRoleId = DB::table('roles')->where('name', 'admin')->first()->id ?? null;
         User::create([
-            'name' => 'Administrator',
             'email' => 'admin@example.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),

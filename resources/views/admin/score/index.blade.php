@@ -25,7 +25,7 @@
                             @foreach ($registrations as $registration)
                                 <tr class="text-center bg-gray-800 border-b border-gray-700">
                                     <td class="py-2 px-4">{{ $loop->iteration }}</td>
-                                    <td class="py-2 px-4">{{ $registration->user->name }}</td>
+                                    <td class="py-2 px-4">{{ $registration->name }}</td>
                                     <td class="py-2 px-4">{{ $registration->class }} - {{ $registration->period }}</td>
                                     <td class="py-2 px-4">{{ $registration->course->name }}</td>
                                     <td class="py-2 px-4">{{ $registration->test->testTulis ?? '-' }}</td>

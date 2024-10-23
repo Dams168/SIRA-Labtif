@@ -38,6 +38,7 @@ class ProgramController extends Controller
         }
 
         $validated = $request->validate([
+            'name' => 'required|max:255',
             'npm' => 'required|max:10|unique:registrations,npm',
             'class' => 'required',
             'period' => 'required',
