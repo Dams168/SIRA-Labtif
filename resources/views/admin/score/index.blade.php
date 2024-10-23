@@ -18,6 +18,8 @@
                                 <th scope="col" class="px-3 py-3">Nilai Test Tulis Dan Praktik</th>
                                 <th scope="col" class="px-3 py-3">Nilai Wawancara Asisten</th>
                                 <th scope="col" class="px-3 py-3">Nilai Wawancara Dosen</th>
+                                <th scope="col" class="px-3 py-3">Nilai Akhir</th>
+                                <th scope="col" class="px-3 py-3">Hasil</th>
                                 <th scope="col" class="px-3 py-3">Aksi</th>
                             </tr>
                         </thead>
@@ -31,6 +33,8 @@
                                     <td class="py-2 px-4">{{ $registration->test->testTulis ?? '-' }}</td>
                                     <td class="py-2 px-4">{{ $registration->test->wawancaraAsisten ?? '-' }}</td>
                                     <td class="py-2 px-4">{{ $registration->test->wawancaraDosen ?? '-' }}</td>
+                                    <td class="py-2 px-4">{{ $registration->test->result->finalScore ?? '-' }}</td>
+                                    <td class="py-2 px-4">{{ $registration->test->result->result ?? '-' }}</td>
                                     <td class="py-2 px-4">
                                         <x-primary-button tag="a"
                                             href="{{ route('score.create', $registration->id) }}"

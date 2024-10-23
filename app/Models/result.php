@@ -9,7 +9,9 @@ class result extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $fillable = [
+        'testId',
         'finalScore',
         'result',
     ];
