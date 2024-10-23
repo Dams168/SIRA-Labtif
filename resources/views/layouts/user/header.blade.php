@@ -56,7 +56,7 @@
                                 </div>
                                 <ul class="py-2" aria-labelledby="user-menu-button">
                                     <li>
-                                        <a href="#"
+                                        <a href="{{ route('userprofile', Auth::user()->id) }}"
                                             class="block px-4 py-2 text-sm text-gray-200 hover:bg-gray-600 hover:text-white">Akun</a>
                                     </li>
                                     <li>

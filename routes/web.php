@@ -10,12 +10,14 @@ use App\Http\Controllers\Program\FileController;
 use App\Http\Controllers\Program\ProgramController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Score\ScoreController;
+use App\Http\Controllers\User\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/program', [ProgramController::class, 'index'])->name('program');
+
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
@@ -59,8 +61,12 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/program/registration/file/{registration}', [FileController::class, 'create'])->name('file.create');
     Route::post('/program/registration/file/{registration}/store', [FileController::class, 'store'])->name('file.store');
 
+    // Kegiatanku Route
     Route::get('/kegiatanku/{registration}', [FileController::class, 'show'])->name('kegiatanku');
     Route::match(['put', 'patch'], '/kegiatanku/{registration}', [FileController::class, 'update'])->name('kegiatanku.update');
+
+    //Route Profile
+    Route::get('/userprofile/{id}', [UserProfileController::class, 'index'])->name('userprofile');
 
 
     // Route not registered
