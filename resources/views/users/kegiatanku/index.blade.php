@@ -168,6 +168,16 @@
                                 </div>
                             </div>
                         @endif
+
+                        @if ($registration->status === 'Diterima')
+                            @if ($result->result === 'Diterima')
+                                <x-primary-button tag="a" href="{{ route('result.accepted') }}">Lihat
+                                    Hasil</x-primary-button>
+                            @elseif ($result->result === 'Ditolak')
+                                <x-primary-button tag="a" href="{{ route('result.rejected') }}">Lihat
+                                    Hasil</x-primary-button>
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div>

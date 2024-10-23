@@ -7,6 +7,7 @@ use App\Models\course;
 use App\Models\files;
 use App\Models\fileVerification;
 use App\Models\registration;
+use App\Models\result;
 use App\Models\schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,11 +71,12 @@ class FileController extends Controller
         $courses = Course::all();
         $courseId = $registration->course->id;
         $schedules = schedule::where('registrationId', $registrationId)->get();
+        $result = $registration->test->result ?? null;
 
         $course = $courses->where('id', $courseId)->first();
         $file = $registration->file;
 
-        return view('users.kegiatanku.index', compact('registration', 'courses', 'course', 'registrationId', 'file', 'schedules'));
+        return view('users.kegiatanku.index', compact('registration', 'courses', 'course', 'registrationId', 'file', 'schedules', 'result'));
     }
 
     public function update(Request $request, string $id)

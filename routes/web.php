@@ -10,6 +10,7 @@ use App\Http\Controllers\Program\FileController;
 use App\Http\Controllers\Program\ProgramController;
 use App\Http\Controllers\Schedule\ScheduleController;
 use App\Http\Controllers\Score\ScoreController;
+use App\Http\Controllers\User\ResultController;
 use App\Http\Controllers\User\UserProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,6 +71,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/userprofile/{id}/edit', [UserProfileController::class, 'edit'])->name('userprofile.edit');
     Route::match(['put', 'patch'], '/userprofile/update/{id}', [UserProfileController::class, 'update'])->name('userprofile.update');
 
+    //Route Result
+    Route::get('/result/accepted', [ResultController::class, 'accepted'])->name('result.accepted');
+    Route::get('/result/rejected', [ResultController::class, 'rejected'])->name('result.rejected');
 
     // Route not registered
     Route::get('/kegiatanku', function () {
