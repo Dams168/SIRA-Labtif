@@ -6,12 +6,9 @@
     <section class="bg-gray-900 antialiased">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
 
-            <!-- Grid untuk Profile Card, Detail Card, dan Pengaturan Akun -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-                <!-- Profile Card di kiri -->
                 <div class="col-span-1">
-                    <!-- Profile Card -->
                     <div class="border rounded-lg shadow bg-gray-800 border-gray-700 p-4">
                         <div class="flex flex-row gap-5 items-center ">
                             @if (empty($registration->photo))
@@ -29,13 +26,11 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Pengaturan Akun Card -->
                     <div class="border rounded-lg shadow bg-gray-800 border-gray-700 p-6 mt-6">
                         <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-600 pb-2">Pengaturan Akun
                         </h3>
 
-                        <ul class="space-y-4"> <!-- Spacing antara item -->
+                        <ul class="space-y-4">
                             <li
                                 class="flex items-center justify-between text-white pb-2 border-b border-gray-600 hover:text-blue-600 transition duration-300">
                                 <div class="flex items-center gap-3">
@@ -90,30 +85,26 @@
 
                 </div>
 
-                <!-- Detail Profile Card mencakup area kanan (2 kolom di layar besar) -->
                 <div class="col-span-2 border rounded-lg shadow bg-gray-800 border-gray-700 p-6">
                     <div class="col-span-2 bg-gray-800 p-6">
                         <h3 class="text-xl font-semibold text-white mb-4 border-b border-gray-600 pb-2">Informasi Pribadi
                         </h3>
 
                         <div class="space-y-4">
-                            <!-- Nama -->
                             <div>
-                                <p class="text-white">Nama:</p> <!-- Label putih -->
-                                <p class="text-gray-400">{{ $user->name }}</p> <!-- Data abu-abu -->
+                                <p class="text-white">Nama:</p>
+                                <p class="text-gray-400">{{ $user->name }}</p>
                             </div>
                             <div>
-                                <p class="text-white">NPM:</p> <!-- Label putih -->
-                                <p class="text-gray-400">{{ $registration->npm }}</p> <!-- Data abu-abu -->
+                                <p class="text-white">NPM:</p>
+                                <p class="text-gray-400">{{ $registration->npm }}</p>
                             </div>
 
-                            <!-- Kelas -->
                             <div>
                                 <p class="text-white">Kelas:</p>
                                 <p class="text-gray-400">{{ $registration->class }}</p>
                             </div>
 
-                            <!-- Angkatan -->
                             <div>
                                 <p class="text-white">Angkatan:</p>
                                 <p class="text-gray-400">{{ $registration->period }}</p>
