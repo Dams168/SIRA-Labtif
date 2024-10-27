@@ -31,20 +31,22 @@
                         </h3>
 
                         <ul class="space-y-4">
-                            <li
-                                class="flex items-center justify-between text-white pb-2 border-b border-gray-600 hover:text-blue-600 transition duration-300">
-                                <div class="flex items-center gap-3">
-                                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                        viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="square" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M10 19H5a1 1 0 0 1-1-1v-1a3 3 0 0 1 3-3h2m10 1a3 3 0 0 1-3 3m3-3a3 3 0 0 0-3-3m3 3h1m-4 3a3 3 0 0 1-3-3m3 3v1m-3-4a3 3 0 0 1 3-3m-3 3h-1m4-3v-1m-2.121 1.879-.707-.707m5.656 5.656-.707-.707m-4.242 0-.707.707m5.656-5.656-.707.707M12 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                    </svg>
+                            @if (isset($registration))
+                                <li
+                                    class="flex items-center justify-between text-white pb-2 border-b border-gray-600 hover:text-blue-600 transition duration-300">
+                                    <div class="flex items-center gap-3">
+                                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                            viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="square" stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M10 19H5a1 1 0 0 1-1-1v-1a3 3 0 0 1 3-3h2m10 1a3 3 0 0 1-3 3m3-3a3 3 0 0 0-3-3m3 3h1m-4 3a3 3 0 0 1-3-3m3 3v1m-3-4a3 3 0 0 1 3-3m-3 3h-1m4-3v-1m-2.121 1.879-.707-.707m5.656 5.656-.707-.707m-4.242 0-.707.707m5.656-5.656-.707.707M12 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                        </svg>
 
-                                    <a href="{{ route('userprofile.edit', Auth::user()->id) }}">Edit Profile</a>
-                                </div>
-                            </li>
+                                        <a href="{{ route('userprofile.edit', Auth::user()->id) }}">Edit Profile</a>
+                                    </div>
+                                </li>
+                            @endif
 
                             {{-- <li
                                 class="flex items-center justify-between pb-2 border-b border-gray-600 text-white hover:text-blue-600 transition duration-300">

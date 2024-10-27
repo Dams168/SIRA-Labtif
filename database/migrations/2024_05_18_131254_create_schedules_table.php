@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
             $table->string('scheduleName');
+            $table->string('room');
             $table->date('scheduleDate');
 
             $table->unsignedBigInteger('registrationId');
