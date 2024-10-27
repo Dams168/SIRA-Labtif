@@ -15,6 +15,9 @@
                     <p class="text-gray-300"><strong>Kelas:</strong> {{ $registration->class }} {{ $registration->period }}
                     </p>
                     <p class="text-gray-300"><strong>Matkul Minat:</strong> {{ $registration->course->name }}</p>
+                    <x-primary-button tag="a" href="{{ route('file.download', $registration->id) }}">
+                        Download Semua Berkas
+                    </x-primary-button>
                 </div>
             </div>
 

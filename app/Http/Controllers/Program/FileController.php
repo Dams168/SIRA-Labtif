@@ -11,6 +11,7 @@ use App\Models\result;
 use App\Models\schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use ZipArchive;
 
 class FileController extends Controller
 {
@@ -138,6 +139,29 @@ class FileController extends Controller
         $courses = course::all();
 
         return view('admin.file.verify', compact('courses', 'registration'));
+    }
+
+    public function downloadZip($id)
+    {
+        $registration = Registration::findOrFail($id);
+        $files = $registration->file;
+        $username = $registration->name;
+
+        $zip = new ZipArchive();
+        $zipFileName = $username . '.zip';
+        $zipFilePath = storage_path('app/public/uploads/' . $username . '/' . $zipFileName);
+
+        if ($zip->open($zipFilePath, ZipArchive::CREATE) === TRUE) {
+            $zip->addFile(storage_path('app/public/' . $files->fileCV), $username . ' CV.pdf');
+            $zip->addFile(storage_path('app/public/' . $files->fileSuratLamaran), $username . ' Surat Lamaran.pdf');
+            $zip->addFile(storage_path('app/public/' . $files->fileCertificate), $username . ' Certificate.pdf');
+            $zip->addFile(storage_path('app/public/' . $files->fileFHS), $username . ' FHS.pdf');
+            $zip->addFile(storage_path('app/public/' . $files->fileProductImages), $username . ' Product Images.pdf');
+            $zip->addFromString($username . ' Link Product.txt', $files->fileProduct);
+            $zip->close();
+        }
+
+        return response()->download($zipFilePath)->deleteFileAfterSend(true);
     }
 
     public function verify(Request $request, $registrationId)

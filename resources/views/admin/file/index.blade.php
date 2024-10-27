@@ -15,31 +15,31 @@
                                 <th scope="col" class="px-3 py-3">Nama</th>
                                 <th scope="col" class="px-3 py-3">NPM</th>
                                 <th scope="col" class="px-3 py-3">Kelas</th>
-                                <th scope="col" class="px-3 py-3">Angkatan</th>
                                 <th scope="col" class="px-3 py-3">tgl Daftar</th>
                                 <th scope="col" class="px-3 py-3">Matkul Minat</th>
+                                <th scope="col" class="px-3 py-3">Status Pendaftaran</th>
                                 <th scope="col" class="px-3 py-3">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($registrations as $key => $registration)
-                                @if ($registration->status === 'Menunggu')
-                                    <tr class="text-center bg-gray-800 border-b border-gray-700">
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $registration->name }}</td>
-                                        <td>{{ $registration->npm }}</td>
-                                        <td>{{ $registration->class }}</td>
-                                        <td>{{ $registration->period }}</td>
-                                        <td>{{ $registration->regDate }}</td>
-                                        <td>{{ $registration->course->name }}</td>
-                                        <td>
-                                            <x-primary-button tag="a"
-                                                href="{{ route('show.verify', $registration->id) }}">
-                                                Verifikasi
-                                            </x-primary-button>
-                                        </td>
-                                    </tr>
-                                @endif
+                                {{-- @if ($registration->status === 'Menunggu') --}}
+                                <tr class="text-center bg-gray-800 border-b border-gray-700">
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $registration->name }}</td>
+                                    <td>{{ $registration->npm }}</td>
+                                    <td>{{ $registration->class }} - {{ $registration->period }}</td>
+                                    <td>{{ $registration->regDate }}</td>
+                                    <td>{{ $registration->course->name }}</td>
+                                    <td>{{ $registration->status }}</td>
+                                    <td>
+                                        <x-primary-button tag="a"
+                                            href="{{ route('show.verify', $registration->id) }}">
+                                            Verifikasi
+                                        </x-primary-button>
+                                    </td>
+                                </tr>
+                                {{-- @endif --}}
                             @endforeach
                         </tbody>
                     </table>

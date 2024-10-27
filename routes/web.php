@@ -29,6 +29,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/file', [FileController::class, 'index'])->name('kelola.file');
     Route::get('/file/{registration}', [FileController::class, 'showVerify'])->name('show.verify');
     Route::post('/file/verify/{registration}', [FileController::class, 'verify'])->name('verify.save');
+    Route::get('/file/{registration}/download', [FileController::class, 'downloadZip'])->name('file.download');
 
     //Route Kelola Jadwal
     Route::get('/jadwal', [ScheduleController::class, 'index'])->name('kelola.jadwal');
