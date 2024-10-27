@@ -25,27 +25,56 @@ class ScheduleController extends Controller
     {
         $request->validate([
             'tanggalTestTulis' => 'required|date',
+            'jumlahRuanganTestTulis' => 'required|integer|min:1',
             'tanggalWawancaraAsisten' => 'required|date',
+            'jumlahRuanganWawancaraAsisten' => 'required|integer|min:1',
             'tanggalWawancaraDosen' => 'required|date',
+            'jumlahRuanganWawancaraDosen' => 'required|integer|min:1',
         ]);
 
         $registrations = Registration::where('status', 'Diterima')->get();
+        $totalRegistrations = $registrations->count();
 
-        foreach ($registrations as $registration) {
+        $jumlahRuanganTestTulis = $request->input('jumlahRuanganTestTulis');
+        $jumlahRuanganWawancaraAsisten = $request->input('jumlahRuanganWawancaraAsisten');
+        $jumlahRuanganWawancaraDosen = $request->input('jumlahRuanganWawancaraDosen');
+
+        if (
+            $jumlahRuanganTestTulis > $totalRegistrations ||
+            $jumlahRuanganWawancaraAsisten > $totalRegistrations ||
+            $jumlahRuanganWawancaraDosen > $totalRegistrations
+        ) {
+            return redirect()->back()->withErrors(['error' => 'Jumlah ruangan tidak boleh lebih banyak dari jumlah peserta.']);
+        }
+
+        foreach ($registrations as $index => $registration) {
             $schedulesData = [
-                'Test Tulis' => $request->input('tanggalTestTulis'),
-                'Wawancara Asisten' => $request->input('tanggalWawancaraAsisten'),
-                'Wawancara Dosen' => $request->input('tanggalWawancaraDosen'),
+                'Test Tulis' => [
+                    'date' => $request->input('tanggalTestTulis'),
+                    'roomCount' => $jumlahRuanganTestTulis,
+                ],
+                'Wawancara Asisten' => [
+                    'date' => $request->input('tanggalWawancaraAsisten'),
+                    'roomCount' => $jumlahRuanganWawancaraAsisten,
+                ],
+                'Wawancara Dosen' => [
+                    'date' => $request->input('tanggalWawancaraDosen'),
+                    'roomCount' => $jumlahRuanganWawancaraDosen,
+                ],
             ];
 
-            foreach ($schedulesData as $scheduleName => $scheduleDate) {
-                $schedule = Schedule::updateOrCreate(
+            foreach ($schedulesData as $scheduleName => $data) {
+                $roomIndex = $index % $data['roomCount'];
+                $roomName = 'Labkom ' . ($roomIndex + 1);
+
+                Schedule::updateOrCreate(
                     [
                         'registrationId' => $registration->id,
                         'scheduleName' => $scheduleName
                     ],
                     [
-                        'scheduleDate' => $scheduleDate
+                        'scheduleDate' => $data['date'],
+                        'room' => $roomName
                     ]
                 );
             }

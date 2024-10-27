@@ -15,6 +15,7 @@ class schedule extends Model
         'scheduleName',
         'scheduleDate',
         'registrationId',
+        'room'
     ];
 
     public function tests()

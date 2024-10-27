@@ -148,6 +148,9 @@
                                                     <th scope="col" class="px-6 py-3">
                                                         Tanggal Test
                                                     </th>
+                                                    <th scope="col" class="px-6 py-3">
+                                                        Ruangan
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -160,6 +163,9 @@
                                                         <td class="px-6 py-4">
                                                             {{ \Carbon\Carbon::parse($schedule->scheduleDate)->locale('id')->translatedFormat('l, d F Y') }}
                                                         </td>
+                                                        <td class="px-6 py-4">
+                                                            {{ $schedule->room }}
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -169,7 +175,7 @@
                             </div>
                         @endif
 
-                        @if ($registration->status === 'Diterima')
+                        @if ($registration->status === 'Diterima' && $result)
                             @if ($result->result === 'Diterima')
                                 <x-primary-button tag="a" href="{{ route('result.accepted') }}">Lihat
                                     Hasil</x-primary-button>

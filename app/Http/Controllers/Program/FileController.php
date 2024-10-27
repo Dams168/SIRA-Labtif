@@ -59,11 +59,7 @@ class FileController extends Controller
             'alert-type' => 'success'
         );
 
-        if ($request->save == true) {
-            return redirect()->route('kegiatanku', $registration->id)->with($notification);
-        } else {
-            return redirect()->route('file.create', $registration->id)->with($notification);
-        }
+        return redirect()->route('kegiatanku', $registration->id)->with($notification);
     }
 
     public function show($registrationId)

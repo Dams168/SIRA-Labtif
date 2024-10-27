@@ -50,18 +50,14 @@
                     </div>
                     <div>
                         <label for="period" class="block mb-2 text-sm font-medium text-white">Angkatan</label>
-                        <select id="period" name="period"
+                        <input type="number" id="period" name="period"
                             class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
-                            required>
-                            <option value="" disabled selected>Pilih angkatan</option>
-                            <option value="2021" {{ old('period') == '2021' ? 'selected' : '' }}>2021</option>
-                            <option value="2022" {{ old('period') == '2022' ? 'selected' : '' }}>2022</option>
-                            <option value="2023" {{ old('period') == '2023' ? 'selected' : '' }}>2023</option>
-                        </select>
+                            min="2021" max="{{ date('Y') }}" value="{{ old('period') }}" required>
                         @error('period')
                             <div class="mt-2 text-red-500 text-sm">{{ $message }}</div>
                         @enderror
                     </div>
+
                     <div class="mb-6">
                         <label class="block mb-2 text-sm font-medium text-white" for="photo">Upload Photo</label>
                         <input name="photo"

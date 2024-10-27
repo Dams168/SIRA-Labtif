@@ -35,7 +35,8 @@
                         <div>
                             <label class="text-white" for="period">Angkatan:</label>
                             <input type="text" id="period" name="period" value="{{ $registration->period }}"
-                                class="w-full p-2 rounded-md border border-gray-600 bg-gray-700 text-white" required>
+                                class="w-full p-2 rounded-md border border-gray-600 bg-gray-700 text-white" min="2021"
+                                max="{{ date('Y') }}" value="{{ old('period') }}"required>
                         </div>
 
                         <div class="mb-6">
