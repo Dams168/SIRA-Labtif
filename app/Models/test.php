@@ -29,4 +29,9 @@ class test extends Model
     {
         return $this->hasOne(result::class, 'testId');
     }
+
+    public function testDetail()
+    {
+        return $this->hasOne(testDetail::class, 'testId');
+    }
 }

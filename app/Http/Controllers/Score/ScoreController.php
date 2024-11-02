@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\registration;
 use App\Models\result;
 use App\Models\test;
+use App\Models\testDetail;
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
@@ -27,17 +28,24 @@ class ScoreController extends Controller
     public function storeOrUpdateAll(Request $request)
     {
         $request->validate([
-            'testTulis' => 'required|numeric|min:0|max:100',
-            'wawancaraAsisten' => 'required|numeric|min:0|max:100',
-            'wawancaraDosen' => 'required|numeric|min:0|max:100',
+            'psikotest' => 'required|numeric|min:0|max:100',
+            'umum' => 'required|numeric|min:0|max:100',
+            'minatan' => 'required|numeric|min:0|max:100',
+            'praktek' => 'required|numeric|min:0|max:100',
+            'mengajar' => 'required|numeric|min:0|max:100',
+            'pengenalanDiri' => 'required|numeric|min:0|max:100',
+            'dosen1' => 'required|numeric|min:0|max:100',
+            'dosen2' => 'required|numeric|min:0|max:100',
+            'dosen3' => 'required|numeric|min:0|max:100',
+            'dosen4' => 'required|numeric|min:0|max:100',
             'result' => 'nullable|in:Diterima,Ditolak,Menunggu',
         ]);
 
         $registration = Registration::findOrFail($request->input('registrationId'));
 
-        $testTulis = $request->input('testTulis');
-        $wawancaraAsisten = $request->input('wawancaraAsisten');
-        $wawancaraDosen = $request->input('wawancaraDosen');
+        $testTulis = ($request->input('psikotest') + $request->input('umum') + $request->input('minatan') + $request->input('praktek')) / 4;
+        $wawancaraAsisten = ($request->input('mengajar') + $request->input('pengenalanDiri')) / 2;
+        $wawancaraDosen = ($request->input('dosen1') + $request->input('dosen2') + $request->input('dosen3') + $request->input('dosen4')) / 4;
 
         $finalScore = ($testTulis + $wawancaraAsisten + $wawancaraDosen) / 3;
 
@@ -51,7 +59,23 @@ class ScoreController extends Controller
         $test->wawancaraDosen = $wawancaraDosen;
         $test->save();
 
-        $result = result::updateOrCreate(
+        testDetail::updateOrCreate(
+            ['testId' => $test->id],
+            [
+                'psikotest' => $request->input('psikotest'),
+                'umum' => $request->input('umum'),
+                'minatan' => $request->input('minatan'),
+                'praktek' => $request->input('praktek'),
+                'mengajar' => $request->input('mengajar'),
+                'pengenalanDiri' => $request->input('pengenalanDiri'),
+                'dosen1' => $request->input('dosen1'),
+                'dosen2' => $request->input('dosen2'),
+                'dosen3' => $request->input('dosen3'),
+                'dosen4' => $request->input('dosen4'),
+            ]
+        );
+
+        Result::updateOrCreate(
             ['testId' => $test->id],
             [
                 'finalScore' => $finalScore,
@@ -59,10 +83,10 @@ class ScoreController extends Controller
             ]
         );
 
-        $notification = array(
+        $notification = [
             'message' => 'Data nilai berhasil disimpan.',
             'alert-type' => 'success'
-        );
+        ];
 
         return redirect()->route('kelola.nilai')->with($notification);
     }
