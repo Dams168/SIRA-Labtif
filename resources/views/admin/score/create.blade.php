@@ -18,7 +18,7 @@
                         <div>
                             <label for="psikotest" class="block text-gray-300">Nilai Psikotest:</label>
                             <input type="number" name="psikotest" id="psikotest"
-                                value="{{ old('psikotest', $registration->testDetail->psikotest ?? '') }}"
+                                value="{{ old('psikotest', $registration->test->testDetail->psikotest ?? '') }}"
                                 class="border border-gray-600 rounded-md px-3 py-2 mt-1 w-full bg-gray-800 text-gray-200">
                             @error('psikotest')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -28,7 +28,7 @@
                         <div>
                             <label for="umum" class="block text-gray-300">Nilai Pengetahuan Umum:</label>
                             <input type="number" name="umum" id="umum"
-                                value="{{ old('umum', $registration->testDetail->umum ?? '') }}"
+                                value="{{ old('umum', $registration->test->testDetail->umum ?? '') }}"
                                 class="border border-gray-600 rounded-md px-3 py-2 mt-1 w-full bg-gray-800 text-gray-200">
                             @error('umum')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -38,7 +38,7 @@
                         <div>
                             <label for="minatan" class="block text-gray-300">Nilai Minatan:</label>
                             <input type="number" name="minatan" id="minatan"
-                                value="{{ old('minatan', $registration->testDetail->minatan ?? '') }}"
+                                value="{{ old('minatan', $registration->test->testDetail->minatan ?? '') }}"
                                 class="border border-gray-600 rounded-md px-3 py-2 mt-1 w-full bg-gray-800 text-gray-200">
                             @error('minatan')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -48,7 +48,7 @@
                         <div>
                             <label for="praktek" class="block text-gray-300">Nilai Praktek:</label>
                             <input type="number" name="praktek" id="praktek"
-                                value="{{ old('praktek', $registration->testDetail->praktek ?? '') }}"
+                                value="{{ old('praktek', $registration->test->testDetail->praktek ?? '') }}"
                                 class="border border-gray-600 rounded-md px-3 py-2 mt-1 w-full bg-gray-800 text-gray-200">
                             @error('praktek')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -65,7 +65,7 @@
                         <div>
                             <label for="mengajar" class="block text-gray-300">Nilai Kemampuan Mengajar:</label>
                             <input type="number" name="mengajar" id="mengajar"
-                                value="{{ old('mengajar', $registration->testDetail->mengajar ?? '') }}"
+                                value="{{ old('mengajar', $registration->test->testDetail->mengajar ?? '') }}"
                                 class="border border-gray-600 rounded-md px-3 py-2 mt-1 w-full bg-gray-800 text-gray-200">
                             @error('mengajar')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -76,7 +76,7 @@
                             <label for="pengenalanDiri" class="block text-gray-300">Nilai Pengenalan Diri dan
                                 Motivasi:</label>
                             <input type="number" name="pengenalanDiri" id="pengenalanDiri"
-                                value="{{ old('pengenalanDiri', $registration->testDetail->pengenalanDiri ?? '') }}"
+                                value="{{ old('pengenalanDiri', $registration->test->testDetail->pengenalanDiri ?? '') }}"
                                 class="border border-gray-600 rounded-md px-3 py-2 mt-1 w-full bg-gray-800 text-gray-200">
                             @error('pengenalanDiri')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -93,7 +93,7 @@
                         <div>
                             <label for="dosen1" class="block text-gray-300">Nilai Dosen 1:</label>
                             <input type="number" name="dosen1" id="dosen1"
-                                value="{{ old('dosen1', $registration->testDetail->dosen1 ?? '') }}"
+                                value="{{ old('dosen1', $registration->test->testDetail->dosen1 ?? '') }}"
                                 class="border border-gray-600 rounded-md px-3 py-2 mt-1 w-full bg-gray-800 text-gray-200">
                             @error('dosen1')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -103,7 +103,7 @@
                         <div>
                             <label for="dosen2" class="block text-gray-300">Nilai Dosen 2:</label>
                             <input type="number" name="dosen2" id="dosen2"
-                                value="{{ old('dosen2', $registration->testDetail->dosen2 ?? '') }}"
+                                value="{{ old('dosen2', $registration->test->testDetail->dosen2 ?? '') }}"
                                 class="border border-gray-600 rounded-md px-3 py-2 mt-1 w-full bg-gray-800 text-gray-200">
                             @error('dosen2')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -113,7 +113,7 @@
                         <div>
                             <label for="dosen3" class="block text-gray-300">Nilai Dosen 3:</label>
                             <input type="number" name="dosen3" id="dosen3"
-                                value="{{ old('dosen3', $registration->testDetail->dosen3 ?? '') }}"
+                                value="{{ old('dosen3', $registration->test->testDetail->dosen3 ?? '') }}"
                                 class="border border-gray-600 rounded-md px-3 py-2 mt-1 w-full bg-gray-800 text-gray-200">
                             @error('dosen3')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -122,7 +122,7 @@
                         <div>
                             <label for="dosen4" class="block text-gray-300">Nilai Dosen 4:</label>
                             <input type="number" name="dosen4" id="dosen4"
-                                value="{{ old('dosen4', $registration->testDetail->dosen4 ?? '') }}"
+                                value="{{ old('dosen4', $registration->test->testDetail->dosen4 ?? '') }}"
                                 class="border border-gray-600 rounded-md px-3 py-2 mt-1 w-full bg-gray-800 text-gray-200">
                             @error('dosen4')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
