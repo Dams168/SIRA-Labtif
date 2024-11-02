@@ -92,7 +92,7 @@ class FileController extends Controller
             'fileProduct' => 'nullable|url',
         ]);
 
-        $username = Auth::user()->user->registration->name;
+        $username = $registration->name;
         $fileData = [];
 
         foreach ($validated as $key => $value) {
