@@ -8,7 +8,8 @@
 
             <div id="editProfile" class="p-6 bg-gray-800 border border-gray-700 rounded-lg">
                 <h3 class="text-xl font-semibold text-white mb-4">Edit Profil</h3>
-                <form id="editProfileForm" action="{{ route('userprofile.update', $registration->id) }}" method="POST">
+                <form id="editProfileForm" action="{{ route('userprofile.update', $registration->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="space-y-4">

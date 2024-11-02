@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ProgramController extends Controller
 {
@@ -51,7 +52,7 @@ class ProgramController extends Controller
         if ($request->hasFile('photo')) {
             $path = $request->file('photo')->storeAs(
                 'public/photo_profile',
-                'photo_profile_' . Auth::user()->name . '.' . $request->file('photo')->extension()
+                'photo_profile_' . Str::before(Auth::user()->email, '@') . '.' . $request->file('photo')->extension()
             );
             $validated['photo'] = basename($path);
         }

@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UserProfileController extends Controller
 {
@@ -37,18 +38,17 @@ class UserProfileController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'npm' => 'required|string|max:15',
             'class' => 'required|string|max:15',
             'period' => 'required|string|max:15',
         ]);
         if ($request->hasFile('photo')) {
-            if ($registration->photo) {
-                Storage::delete('public/photo_profile/' . $registration->photo);
-            }
-            $fileName = time() . '_' . $request->file('photo')->getClientOriginalName();
-            $request->file('photo')->storeAs('public/photo_profile', $fileName);
-            $validated['photo'] = $fileName;
+            $path = $request->file('photo')->storeAs(
+                'public/photo_profile',
+                'photo_profile_' . Str::before(Auth::user()->email, '@') . '.' . $request->file('photo')->extension()
+            );
+            $validated['photo'] = basename($path);
         } else {
             $validated['photo'] = $registration->photo;
         }
