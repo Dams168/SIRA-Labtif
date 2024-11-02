@@ -148,6 +148,13 @@
                         Simpan Nilai
                     </button>
                 </div>
+
+                @if ($registration->result && in_array($registration->test->results->result, ['Diterima', 'Ditolak']))
+                    <form action="{{ route('email.send', $registration->id) }}" method="POST" class="mt-4">
+                        @csrf
+                        <x-primary-button type="submit">Kirim Email</x-primary-button>
+                    </form>
+                @endif
             </form>
         </div>
     </section>

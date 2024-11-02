@@ -41,6 +41,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/nilai/create/{registrationId}', [ScoreController::class, 'create'])->name('score.create');
     Route::post('/nilai/storeOrUpdateAll', [ScoreController::class, 'storeOrUpdateAll'])->name('score.storeOrUpdateAll');
 
+    //route send Email
+    Route::post('email/send/{id}', [ScoreController::class, 'sendEmail'])->name('email.send');
+
+
     //Route Kelola Informasi
     Route::get('/informasi', [InformationController::class, 'index'])->name('kelola.informasi');
     Route::get('/informasi/create', [InformationController::class, 'create'])->name('informasi.create');

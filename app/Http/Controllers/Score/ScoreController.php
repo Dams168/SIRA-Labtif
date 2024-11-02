@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Score;
 
 use App\Http\Controllers\Controller;
+use App\Mail\resultMail;
 use App\Models\registration;
 use App\Models\result;
 use App\Models\test;
 use App\Models\testDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ScoreController extends Controller
 {
@@ -83,11 +85,27 @@ class ScoreController extends Controller
             ]
         );
 
+        if (in_array($test->result->result, ['Diterima', 'Ditolak'])) {
+            Mail::to($registration->user->email)->send(new resultMail($registration));
+        }
+
         $notification = [
             'message' => 'Data nilai berhasil disimpan.',
             'alert-type' => 'success'
         ];
 
+        return redirect()->route('kelola.nilai')->with($notification);
+    }
+
+    public function sendEmail($id)
+    {
+        $registration = Registration::findOrFail($id);
+        Mail::to($registration->user->email)->send(new resultMail($registration));
+
+        $notification = [
+            'message' => 'Email berhasil dikirim.',
+            'alert-type' => 'success'
+        ];
         return redirect()->route('kelola.nilai')->with($notification);
     }
 }
