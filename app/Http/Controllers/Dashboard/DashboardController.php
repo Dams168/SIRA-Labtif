@@ -11,6 +11,11 @@ class DashboardController extends Controller
     public function index()
     {
         $registrations = registration::all();
-        return view('admin.dashboard.index', compact('registrations'));
+
+        $totalRegistrations = registration::count();
+        $totalPending = registration::where('status', 'Menunggu')->count();
+        $totalValidated = registration::where('status', 'Diterima', 'Ditolak')->count();
+
+        return view('admin.dashboard.index', compact('registrations', 'totalRegistrations',  'totalPending', 'totalValidated'));
     }
 }
