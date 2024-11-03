@@ -22,5 +22,13 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'roleId' => $adminRoleId,
         ]);
+
+        $koordinatorRoleId = DB::table('roles')->where('name', 'koordinator')->first()->id ?? null;
+        User::create([
+            'email' => 'koordinator@example.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'roleId' => $koordinatorRoleId,
+        ]);
     }
 }

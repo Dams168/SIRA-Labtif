@@ -5,6 +5,7 @@ use App\Http\Controllers\Course\CourseController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Information\InformationController;
+use App\Http\Controllers\Koordinator\dashboardController as KoordinatorDashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Program\FileController;
 use App\Http\Controllers\Program\ProgramController;
@@ -18,6 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/program', [ProgramController::class, 'index'])->name('program');
+Route::get('/file/{registration}/download', [FileController::class, 'downloadZip'])->name('file.download');
+
+Route::middleware(['auth', 'role:koordinator'])->group(function () {
+    //Route dashboard koordinator
+    Route::get('/koor/dashboard', [KoordinatorDashboardController::class, 'index'])->name('koordinator.dashboard');
+    Route::get('/koor/dashboard/detail/{id}', [KoordinatorDashboardController::class, 'showDetail'])->name('koordinator.detail');
+    Route::get('/koor/dashboard/print', [KoordinatorDashboardController::class, 'printPdf'])->name('koordinator.print');
+});
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -29,7 +38,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/file', [FileController::class, 'index'])->name('kelola.file');
     Route::get('/file/{registration}', [FileController::class, 'showVerify'])->name('show.verify');
     Route::post('/file/verify/{registration}', [FileController::class, 'verify'])->name('verify.save');
-    Route::get('/file/{registration}/download', [FileController::class, 'downloadZip'])->name('file.download');
+
 
     //Route Kelola Jadwal
     Route::get('/jadwal', [ScheduleController::class, 'index'])->name('kelola.jadwal');

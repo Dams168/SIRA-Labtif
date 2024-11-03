@@ -36,12 +36,18 @@ class AuthenticatedSessionController extends Controller
                     'alert-type' => 'success'
                 );
                 return redirect()->intended(route('dashboard', absolute: false))->with($notification);
-            } else {
+            } elseif (Auth::user()->roleId === 2) {
                 $notification = array(
                     'message' => 'Login Berhasil',
                     'alert-type' => 'success'
                 );
                 return redirect()->intended(route('home', absolute: false))->with($notification);
+            } else {
+                $notification = array(
+                    'message' => 'Login Berhasil',
+                    'alert-type' => 'success'
+                );
+                return redirect()->intended(route('koordinator.dashboard', absolute: false))->with($notification);
             }
         } catch (ValidationException $e) {
             // Check if the error message contains the message related to password Bcrypt algorithm
