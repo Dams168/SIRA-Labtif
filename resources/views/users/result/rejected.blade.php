@@ -22,6 +22,30 @@
                 lain mungkin sedang menanti!
             </p>
 
+            <h4 class="text-white text-sm sm:text-xl font-extrabold mb-4">Daftar Mahasiswa Yang Diterima Menjadi Asisten
+                Laboratorium</h4>
+            <table class="w-full text-sm text-left text-gray-400 bg-gray-900">
+                <thead class="text-xs uppercase bg-gray-700 text-gray-400 text-center">
+                    <tr>
+                        <th scope="col" class="px-3 py-3">No</th>
+                        <th scope="col" class="px-3 py-3">Nama</th>
+                        <th scope="col" class="px-3 py-3">Kelas</th>
+                        <th scope="col" class="px-3 py-3">Hasil Rekrutmen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($registrations as $registration)
+                        <tr class="text-center bg-gray-800 border-b border-gray-700">
+                            <td class="py-2 px-4">{{ $loop->iteration }}</td>
+                            <td class="py-2 px-4">{{ $registration->name }}</td>
+                            <td class="py-2 px-4">{{ $registration->class }} - {{ $registration->period }}</td>
+                            <td class="py-2 px-4">{{ $registration->test->result->result ?? '-' }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+
             <x-primary-button tag="a" href="{{ route('kegiatanku', $registration->id) }}"
                 class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
                 Kegiatanku

@@ -11,7 +11,7 @@
         Halo {{ $registration->name }}
     </h3>
     <p>Kami ingin memberitahukan bahwa hasil penilaian Anda adalah:
-        <strong>{{ $registration->test->result->result }}</strong>.
+        <strong>{{ $registration->test->result->result ?? '-' }}</strong>.
     </p>
 
     <p>
