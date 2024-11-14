@@ -14,15 +14,18 @@
         <strong>{{ $registration->test->result->result ?? '-' }}</strong>.
     </p>
 
-    <p>
+    {{-- <p>
         Dengan Nilai Akhir: <strong>{{ $registration->test->result->finalScore }}</strong>
-    </p>
+    </p> --}}
 
+    <p>
+        silahkan login ke <a href="{{ route('login') }}">sini</a> untuk melihat hasil selengkapnya.
+    </p>
     <p>
         Terima kasih telah mendaftar sebagai asisten laboratorium.
     </p>
-
-    @if ($registration->status === 'Diterima' && $registration->test->result)
+    {{--
+    @if ($registration->status === 'Diterima')
         @if ($registration->test->result->result === 'Diterima')
             <x-primary-button tag="a" href="{{ route('result.accepted') }}">Lihat
                 Hasil</x-primary-button>
@@ -30,7 +33,7 @@
             <x-primary-button tag="a" href="{{ route('result.rejected') }}">Lihat
                 Hasil</x-primary-button>
         @endif
-    @endif
+    @endif --}}
 </body>
 
 </html>

@@ -44,6 +44,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/jadwal', [ScheduleController::class, 'index'])->name('kelola.jadwal');
     Route::get('/jadwal/setting', [ScheduleController::class, 'create'])->name('jadwal.setting');
     Route::post('/jadwal/store', [ScheduleController::class, 'storeOrUpdateAll'])->name('jadwal.storeOrUpdateAll');
+    Route::get('/jadwal/print', [ScheduleController::class, 'printSchedule'])->name('jadwal.print');
 
     //Route Kelola Nilai
     Route::get('/nilai', [ScoreController::class, 'index'])->name('kelola.nilai');

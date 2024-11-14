@@ -12,9 +12,9 @@
                 SELAMAT, KAMU TERPILIH SEBAGAI ASISTEN LABORATORIUM
             </h1>
 
-            <p class="text-gray-300 text-lg sm:text-xl mb-6">
+            {{-- <p class="text-gray-300 text-lg sm:text-xl mb-6">
                 Dengan Nilai Akhir: <span class="text-blue-500 font-bold">{{ $result->finalScore }}</span>
-            </p>
+            </p> --}}
 
             <p class="text-gray-300 mb-6">
                 Terima kasih telah mendaftar sebagai asisten laboratorium. Silahkan cek whatsapp kamu secara berkala untuk

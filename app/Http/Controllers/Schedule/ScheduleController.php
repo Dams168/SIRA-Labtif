@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Schedule;
 use App\Http\Controllers\Controller;
 use App\Models\registration;
 use App\Models\schedule;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
@@ -86,5 +87,12 @@ class ScheduleController extends Controller
         );
 
         return redirect()->route('kelola.jadwal')->with($notification);
+    }
+
+    public function printSchedule()
+    {
+        $registrations = Registration::with('schedules')->where('status', 'Diterima')->get();
+        $pdf = Pdf::loadView('admin.jadwal.print', compact('registrations'))->setPaper('a4', 'potrait');
+        return $pdf->download('Jadwal Rekrutmen.pdf');
     }
 }

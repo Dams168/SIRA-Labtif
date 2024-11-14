@@ -13,9 +13,9 @@
                 Mohon Maaf, Kamu belum terpilih sebagai Asisten Laboratorium
             </h1>
 
-            <p class="text-gray-300 text-lg sm:text-xl mb-6">
+            {{-- <p class="text-gray-300 text-lg sm:text-xl mb-6">
                 Dengan Nilai Akhir: <span class="text-red-500 font-bold">{{ $result->finalScore }}</span>
-            </p>
+            </p> --}}
 
             <p class="text-gray-300 mb-6">
                 Terima kasih telah mendaftar sebagai asisten laboratorium. Tetap semangat dan jangan menyerah, kesempatan

@@ -11,6 +11,9 @@
                     <x-primary-button tag="a" href="{{ route('jadwal.setting') }}">
                         Kelola Jadwal
                     </x-primary-button>
+                    <x-primary-button tag="a" href="{{ route('jadwal.print') }}">
+                        Print to PDf
+                    </x-primary-button>
                     <table class="w-full text-sm text-left text-gray-400 bg-gray-900">
                         <thead class="text-xs uppercase bg-gray-700 text-gray-400 text-center">
                             <tr>

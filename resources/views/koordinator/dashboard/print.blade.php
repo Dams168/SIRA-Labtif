@@ -144,6 +144,34 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="page-break"></div>
+
+    <h2>Data Calon Asisten Yang Diterima</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th>Minatan</th>
+                <th>Nilai Akhir</th>
+                <th>Hasil Akhir</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($results as $result)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $result->test->registration->name }}</td>
+                    <td>{{ $result->test->registration->class }} - {{ $result->test->registration->period }}</td>
+                    <td>{{ $result->test->registration->course->name }}</td>
+                    <td>{{ $result->finalScore }}</td>
+                    <td>{{ $result->result }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </body>
 
 </html>

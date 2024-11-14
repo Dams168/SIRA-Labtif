@@ -49,11 +49,7 @@ class CourseController extends Controller
             'alert-type' => 'success'
         );
 
-        if ($request->save == true) {
-            return redirect()->route('kelola.course')->with($notification);
-        } else {
-            return redirect()->route('admin.course.create')->with($notification);
-        }
+        return redirect()->route('kelola.course')->with($notification);
     }
 
     public function edit($id)
