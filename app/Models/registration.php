@@ -9,6 +9,9 @@ class registration extends Model
 {
     use HasFactory;
 
+    // protected $table = 'registrations';
+    // protected $dates = ['created_date', 'updated_date'];
+
     public $timestamps = false;
     protected $fillable = [
         'userId',

@@ -14,7 +14,7 @@
                 @foreach ($courses as $course)
                     <div class="max-w-sm border rounded-lg shadow bg-gray-800 border-gray-700">
                         <a href="#">
-                            <img class="rounded-t-lg w-auto h-72 object-cover object-center"
+                            <img class="rounded-t-lg w-auto h-72 object-cover object-center fit-cover"
                                 src="{{ asset('storage/course/' . ($course->image ?? '')) }}" alt="Uploaded Image"
                                 onerror="this.onerror=null; this.src='{{ asset($course->image) }}';" />
                         </a>

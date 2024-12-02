@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Report PDF</title>
+    <title>Jadwal Rekrutmen</title>
     <style>
         body {
             font-family: Arial, sans-serif;

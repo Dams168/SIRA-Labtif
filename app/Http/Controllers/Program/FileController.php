@@ -9,8 +9,10 @@ use App\Models\fileVerification;
 use App\Models\registration;
 use App\Models\result;
 use App\Models\schedule;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use ZipArchive;
 
 class FileController extends Controller
@@ -69,11 +71,20 @@ class FileController extends Controller
         $courseId = $registration->course->id;
         $schedules = schedule::where('registrationId', $registrationId)->get();
         $result = $registration->test->result ?? null;
-
+        $registrations = Registration::where('status', 'Ditolak')->get();
+        $timers = [];
+        foreach ($registrations as $registration) {
+            $rejectedTime = Cache::get('rejected_registration_' . $registration->id);
+            if (!$rejectedTime) {
+                $registration->delete();
+            } else {
+                $timers[$registration->id] = $rejectedTime;
+            }
+        }
         $course = $courses->where('id', $courseId)->first();
         $file = $registration->file;
 
-        return view('users.kegiatanku.index', compact('registration', 'courses', 'course', 'registrationId', 'file', 'schedules', 'result'));
+        return view('users.kegiatanku.index', compact('registration', 'courses', 'course', 'registrationId', 'file', 'schedules', 'result', 'registrations', 'timers'));
     }
 
     public function update(Request $request, string $id)
@@ -180,10 +191,8 @@ class FileController extends Controller
 
         $file = $registration->file;
 
-        // Create or update the verification record
         $fileVerification = $file->verification ?: new FileVerification(['file_id' => $file->id]);
 
-        // Konversi nilai 1 dari form ke boolean
         $fileVerification->fileCV_verified = isset($validatedData['verification']['fileCV']) ? (bool)$validatedData['verification']['fileCV'] : false;
         $fileVerification->fileSuratLamaran_verified = isset($validatedData['verification']['fileSuratLamaran']) ? (bool)$validatedData['verification']['fileSuratLamaran'] : false;
         $fileVerification->fileCertificate_verified = isset($validatedData['verification']['fileCertificate']) ? (bool)$validatedData['verification']['fileCertificate'] : false;
@@ -192,7 +201,6 @@ class FileController extends Controller
         $fileVerification->fileProduct_verified = isset($validatedData['verification']['fileProduct']) ? (bool)$validatedData['verification']['fileProduct'] : false;
         $fileVerification->save();
 
-        // simpan file yang tidak terverifikasi
         $unverifiedFiles = [];
         if (!$fileVerification->fileCV_verified) $unverifiedFiles[] = 'CV';
         if (!$fileVerification->fileSuratLamaran_verified) $unverifiedFiles[] = 'Surat Lamaran';
@@ -207,6 +215,7 @@ class FileController extends Controller
         } else {
             $registration->status = 'Ditolak';
             $registration->note = 'Maaf, pendaftaran Anda ditolak. File yang perlu diperbaiki: ' . implode(', ', $unverifiedFiles) . '. Silahkan cek kembali file yang Anda upload. Terima kasih :)';
+            Cache::put('rejected_registration_' . $registrationId, now(), now()->addWeek());
         }
         $registration->save();
 
