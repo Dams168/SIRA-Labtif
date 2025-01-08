@@ -28,35 +28,41 @@
                     <div class="grid grid-cols-1 lg:grid-cols-1 gap-3">
                         @if ($registration->status === 'Diterima' or $registration->status === 'Ditolak')
                             <!-- Catatan -->
-                            <div class="p-6 bg-gray-800 rounded-lg shadow-md">
-                                <h3 class="text-lg font-bold text-white">Catatan :</h3>
-                                <p class="mt-2 text-gray-400">{{ $registration->note }}</p>
+                            @foreach ($registrations as $rejectedRegistration)
+                                <div class="p-6 bg-gray-800 rounded-lg shadow-md">
+                                    <h3 class="text-lg font-bold text-white">Catatan :</h3>
+                                    <p class="mt-2 text-gray-400">{{ $rejectedRegistration->note }}</p>
 
-                                <div id="countdown-timer-{{ $registration->id }}"
-                                    class="mt-4 text-lg font-bold text-red-500"></div>
+                                    <div id="countdown-timer-{{ $rejectedRegistration->id }}"
+                                        class="mt-4 text-lg font-bold text-red-500"></div>
 
-                                <script>
-                                    const expiryTime{{ $registration->id }} = new Date(
-                                        '{{ \Carbon\Carbon::parse($timers[$registration->id])->addMinute()->format('Y-m-d H:i:s') }}').getTime();
+                                    <script>
+                                        const expiryTime{{ $rejectedRegistration->id }} = new Date(
+                                            '{{ \Carbon\Carbon::parse($timers[$rejectedRegistration->id])->addWeek()->setTimezone('Asia/Bangkok')->format('Y-m-d H:i:s') }}'
+                                        ).getTime();
 
-                                    const timerInterval{{ $registration->id }} = setInterval(() => {
-                                        const now = new Date().getTime();
-                                        const distance = expiryTime{{ $registration->id }} - now;
+                                        const timerInterval{{ $rejectedRegistration->id }} = setInterval(() => {
+                                            const now = new Date().getTime();
+                                            const distance = expiryTime{{ $rejectedRegistration->id }} - now;
 
-                                        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                                        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                                        const timerElement = document.getElementById('countdown-timer-{{ $registration->id }}');
-                                        if (distance > 0) {
-                                            timerElement.textContent = `Sisa Waktu: ${minutes} Menit ${seconds} Detik`;
-                                        } else {
-                                            clearInterval(timerInterval{{ $registration->id }});
-                                            timerElement.textContent = 'Waktu telah habis.';
-                                            location.reload();
-                                        }
-                                    }, 1000);
-                                </script>
-                            </div>
+                                            const timerElement = document.getElementById('countdown-timer-{{ $rejectedRegistration->id }}');
+                                            if (distance > 0) {
+                                                timerElement.textContent =
+                                                `Sisa Waktu: ${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+                                            } else {
+                                                clearInterval(timerInterval{{ $rejectedRegistration->id }});
+                                                timerElement.textContent = 'Waktu telah habis.';
+                                                location.reload(); // Reload halaman untuk memicu penghapusan data
+                                            }
+                                        }, 1000);
+                                    </script>
+                                </div>
+                            @endforeach
                         @endif
                         @if ($registration->status === 'Ditolak')
                             <div class="p-6 bg-gray-800 rounded-lg shadow-md">

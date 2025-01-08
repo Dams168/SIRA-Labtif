@@ -73,12 +73,12 @@ class FileController extends Controller
         $result = $registration->test->result ?? null;
         $registrations = Registration::where('status', 'Ditolak')->get();
         $timers = [];
-        foreach ($registrations as $registration) {
-            $rejectedTime = Cache::get('rejected_registration_' . $registration->id);
+        foreach ($registrations as $rejectedRegistration) {
+            $rejectedTime = Cache::get('rejected_registration_' . $rejectedRegistration->id);
             if (!$rejectedTime) {
-                $registration->delete();
+                $rejectedRegistration->delete();
             } else {
-                $timers[$registration->id] = $rejectedTime;
+                $timers[$rejectedRegistration->id] = $rejectedTime;
             }
         }
         $course = $courses->where('id', $courseId)->first();
@@ -215,7 +215,7 @@ class FileController extends Controller
         } else {
             $registration->status = 'Ditolak';
             $registration->note = 'Maaf, pendaftaran Anda ditolak. File yang perlu diperbaiki: ' . implode(', ', $unverifiedFiles) . '. Silahkan cek kembali file yang Anda upload. Terima kasih :)';
-            Cache::put('rejected_registration_' . $registrationId, now(), now()->addWeek());
+            Cache::put('rejected_registration_' . $registrationId, now(), now()->addDay());
         }
         $registration->save();
 
